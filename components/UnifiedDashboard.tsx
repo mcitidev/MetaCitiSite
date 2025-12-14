@@ -40,7 +40,7 @@ export function UnifiedDashboard({ image }: UnifiedDashboardProps) {
                                     alt="Unified Dashboard Base"
                                     className="w-full h-auto"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-tr from-red-600/10 to-transparent"/>
+                                <div className="absolute inset-0"/>
                             </div>
                         </motion.div>
 
