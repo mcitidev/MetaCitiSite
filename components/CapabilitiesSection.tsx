@@ -14,6 +14,7 @@ import {
     CarFront,
     Zap
 } from "lucide-react";
+import {useEffect, useState} from "react";
 
 const capabilities = [
    /* { icon: Layers, title: "Platform Integration", description: "Integration with VMS, control rooms, and IoT platforms" },
@@ -40,8 +41,69 @@ const capabilities = [
 ];
 
 
+function useIsTouchDevice() {
+    const [isTouch, setIsTouch] = useState(false);
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+        const mq = window.matchMedia("(hover: none) and (pointer: coarse)");
+        setIsTouch(mq.matches);
+    }, []);
+
+    return isTouch;
+}
+
+const handleTouchPlay = (e: React.TouchEvent<HTMLVideoElement>) => {
+    const video = e.currentTarget;
+
+    e.preventDefault();
+
+    if (video.paused) {
+        video.play();
+    } else {
+        video.pause();
+    }
+};
+
+const handleTapToggle = (e: React.MouseEvent<HTMLVideoElement>) => {
+    const video = e.currentTarget;
+
+    if (video.paused) {
+        video.play();
+    } else {
+        video.pause();
+    }
+};
+
+function usePrimeVideos() {
+    useEffect(() => {
+        const videos = document.querySelectorAll<HTMLVideoElement>("video");
+
+        videos.forEach(video => {
+            video.muted = true;
+            video.playsInline = true;
+
+            // Prime Safari
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise
+                    .then(() => {
+                        video.pause();
+                        video.currentTime = 0;
+                    })
+                    .catch(() => {
+                        // Safari may block — that's fine
+                    });
+            }
+        });
+    }, []);
+}
+
+
 
 export function CapabilitiesSection() {
+    const isTouch = useIsTouchDevice();
+    usePrimeVideos();
     return (
         <section
             id="capabilities"
@@ -84,10 +146,11 @@ export function CapabilitiesSection() {
                         src="otto1.mp4"
                         muted
                         playsInline
+                        preload="metadata"
+                        poster="/posters/otto1.png"
                         onMouseEnter={(e) => e.currentTarget.play()}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.pause();
-                        }}
+                        onMouseLeave={(e) => e.currentTarget.pause()}   // no reset
+                        onClick={handleTapToggle}                       // ← mobile-safe
                         className="w-[35%] h-[35%] rounded-xl object-cover cursor-pointer"
                     />
 
@@ -96,10 +159,11 @@ export function CapabilitiesSection() {
                         src="otto2.mp4"
                         muted
                         playsInline
+                        preload="metadata"
+                        poster="/posters/otto2.png"
                         onMouseEnter={(e) => e.currentTarget.play()}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.pause();
-                        }}
+                        onMouseLeave={(e) => e.currentTarget.pause()}   // no reset
+                        onClick={handleTapToggle}                       // ← mobile-safe
                         className="w-[35%] h-[35%] rounded-xl object-cover cursor-pointer"
                     />
 
@@ -108,15 +172,15 @@ export function CapabilitiesSection() {
                         src="otto23.mp4"
                         muted
                         playsInline
+                        preload="metadata"
+                        poster="/posters/otto23.png"
                         onMouseEnter={(e) => e.currentTarget.play()}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.pause();
-                        }}
+                        onMouseLeave={(e) => e.currentTarget.pause()}   // no reset
+                        onClick={handleTapToggle}                       // ← mobile-safe
                         className="w-[35%] h-[35%] rounded-xl object-cover cursor-pointer"
                     />
 
                 </div>
-
 
 
                 {/* Cards */}
