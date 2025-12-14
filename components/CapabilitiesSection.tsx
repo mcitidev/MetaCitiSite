@@ -167,7 +167,7 @@ export function CapabilitiesSection() {
                                     {/* Title */}
                                     <h3
                                         className="
-                            text-xl font-semibold
+                            text-xl 2xl:text-2xl font-semibold
                             text-red-600
                             transition-colors duration-300
                             group-hover:text-red-600
@@ -178,7 +178,7 @@ export function CapabilitiesSection() {
                                 </div>
 
                                 {/* Description */}
-                                <p className="text-gray-600 leading-relaxed relative z-10">
+                                <p className="2xl:text-xl text-gray-600 font-medium leading-relaxed relative z-10">
                                     {capability.description}
                                 </p>
 
