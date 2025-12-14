@@ -177,7 +177,7 @@ export function CapabilitiesSection() {
                                 }
                             }}
 
-                            className="w-[35%] h-[35%] rounded-xl object-cover cursor-pointer"
+                            className="w-full h-full rounded-xl object-cover cursor-pointer"
                         />
 
                     </div>
@@ -211,7 +211,7 @@ export function CapabilitiesSection() {
                                 }
                             }}
 
-                            className="w-[35%] h-[35%] rounded-xl object-cover cursor-pointer"
+                            className="w-full h-full rounded-xl object-cover cursor-pointer"
                         />
 
                     </div>
@@ -245,7 +245,7 @@ export function CapabilitiesSection() {
                                 }
                             }}
 
-                            className="w-[35%] h-[35%] rounded-xl object-cover cursor-pointer"
+                            className="w-full h-full rounded-xl object-cover cursor-pointer"
                         />
 
                     </div>
