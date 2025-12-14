@@ -7,16 +7,16 @@
 @media (max-width: 640px) {
     .hero-section {
         min-height: auto;
-        padding-top: 5.5rem;   /* reduce perceived navbar gap */
-        padding-bottom: 4rem;
+        padding-left: max(1.25rem, env(safe-area-inset-left));
+        padding-right: max(1.25rem, env(safe-area-inset-right));
     }
 
     /* Force clean vertical flow */
-    .hero-section > div > div {
-        display: flex;
-        flex-direction: column;
+    .hero-section .grid {
+        grid-template-columns: 1fr;
         gap: 3rem;
     }
+
 
     /* Badge / pill */
     .hero-section .inline-flex {
@@ -48,6 +48,7 @@
 
     .hero-section .space-y-8 {
         gap: 1.75rem;
+        padding-inline: 0.25rem;
     }
 
     /* CTA buttons */
