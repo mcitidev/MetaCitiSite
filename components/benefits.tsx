@@ -58,11 +58,11 @@ export function BenefitsSection() {
                             className="group"
                         >
                             <div className="relative h-full p-8 rounded-2xl bg-gray-100 border border-gray-200 hover:border-red-300 hover:shadow-xl hover:shadow-red-600/10 transition-all duration-300">
-                                <div className="w-12 h-12 rounded-xl bg-red-600/20 flex items-center justify-center mb-5 group-hover:bg-[#b62727] group-hover:scale-110 transition-all duration-300">
+                                <div className="w-12 h-12 2xl:h-16 2xl:w-16 rounded-xl bg-red-600/20 flex items-center justify-center mb-5 group-hover:bg-[#b62727] group-hover:scale-110 transition-all duration-300">
                                     <benefit.icon className="h-6 w-6 text-[#b62727] group-hover:text-white transition-colors duration-300" />
                                 </div>
-                                <h3 className="text-xl text-black-900 mb-3 font-medium">{benefit.title}</h3>
-                                <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+                                <h3 className="text-xl 2xl:text-2xl text-black-900 mb-3 font-medium">{benefit.title}</h3>
+                                <p className="text-gray-600 leading-relaxed 2xl:text-xl">{benefit.description}</p>
                             </div>
                         </motion.div>
                     ))}

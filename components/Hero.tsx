@@ -114,7 +114,7 @@ export function Hero() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                     size="lg"
-                    className="bg-gradient-to-r from-[#B7094C] to-[#A01A58] hover:from-[#A01A58] hover:to-[#892B64] text-white group"
+                    className="px-5 py-2 rounded-md bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-md transition"
                 >
                   Request Demo
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"/>
