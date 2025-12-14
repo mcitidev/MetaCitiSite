@@ -105,7 +105,7 @@ export function UnifiedDashboard({ image }: UnifiedDashboardProps) {
                                     className="flex items-center gap-3 p-4 rounded-xl bg-gray-800/50 border border-gray-700 hover:border-red-600/50 hover:bg-gray-800 transition-all duration-300"
                                 >
                                     <feature.icon className="h-5 w-5 text-[#93c5fd] flex-shrink-0"/>
-                                    <span className="text-sm text-gray-300">{feature.text}</span>
+                                    <span className="text-base text-gray-300">{feature.text}</span>
                                 </motion.div>
                             ))}
                         </div>
