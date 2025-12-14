@@ -67,6 +67,7 @@ export function DashboardShowcase() {
 
       {/* Main Dashboard Display */}
       <div className="relative w-full max-w-5xl mx-auto">
+        <div className="relative w-full aspect-[16/9] overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
               key={currentIndex}
@@ -86,6 +87,7 @@ export function DashboardShowcase() {
             {/* <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" /> */}
           </motion.div>
         </AnimatePresence>
+        </div>
       </div>
 
 

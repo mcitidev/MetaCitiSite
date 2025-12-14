@@ -1,5 +1,5 @@
 /* =========================================================
-   HERO — MOBILE & TABLET OVERRIDES
+   HERO — MOBILE & TABLET OVERRIDES (FINAL / SAFE)
    Scoped to .hero-section
    ========================================================= */
 
@@ -11,12 +11,24 @@
         padding-right: max(1.25rem, env(safe-area-inset-right));
     }
 
-    /* Force clean vertical flow */
+    /* Collapse grid safely */
     .hero-section .grid {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
 
+    /* Constrain text column to prevent edge clipping */
+    .hero-section .space-y-8 {
+        max-width: 36rem;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 1.75rem;
+        padding-inline: 0.25rem;
+    }
+
+    .hero-section .space-y-6 {
+        gap: 1.25rem;
+    }
 
     /* Badge / pill */
     .hero-section .inline-flex {
@@ -25,6 +37,7 @@
         max-width: 100%;
         text-align: center;
         justify-content: center;
+        white-space: normal;
     }
 
     /* Headline */
@@ -41,16 +54,6 @@
         max-width: 100%;
     }
 
-    /* Reduce Tailwind vertical stacking density */
-    .hero-section .space-y-6 {
-        gap: 1.25rem;
-    }
-
-    .hero-section .space-y-8 {
-        gap: 1.75rem;
-        padding-inline: 0.25rem;
-    }
-
     /* CTA buttons */
     .hero-section button {
         width: 100%;
@@ -62,7 +65,7 @@
     }
 
     /* Trust indicators */
-    .hero-section [class*="Trusted by industry"] + div {
+    .hero-section .pt-8 > div {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 0.75rem 1rem;
@@ -80,7 +83,6 @@
 
 /* ---------- Small Phones (extra tight) ---------- */
 @media (max-width: 480px) {
-    /* Hide dashboard entirely if needed */
     .hero-section .dashboard-showcase,
     .hero-section [class*="DashboardShowcase"] {
         display: none;
@@ -95,6 +97,10 @@
         padding-bottom: 5rem;
     }
 
+    .hero-section .grid {
+        gap: 4rem;
+    }
+
     .hero-section h1 {
         font-size: 3rem;
         line-height: 1.15;
@@ -103,10 +109,6 @@
     .hero-section p {
         font-size: 1.05rem;
         line-height: 1.65;
-    }
-
-    .hero-section > div > div {
-        gap: 4rem;
     }
 
     .hero-section .dashboard-showcase,
