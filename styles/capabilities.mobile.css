@@ -25,32 +25,39 @@
         margin-bottom: 2.5rem;
     }
 
-    /* --- Video row → horizontal scroll --- */
-    .capabilities-section > div > .flex {
-        display: flex;
-        overflow-x: auto;
-        gap: 1rem;
-        padding-bottom: 0.5rem;
-        margin-right: 0;
-        scroll-snap-type: x mandatory;
+    /* --- Video row → horizontal scroll (MOBILE ONLY) --- */
+    @media (max-width: 640px) {
+        .capabilities-section .cap-videos {
+            display: flex;
+            overflow-x: auto;
+            gap: 1rem;
+            padding-bottom: 0.5rem;
+            margin-right: 0;
+            scroll-snap-type: x mandatory;
+        }
+
+        .capabilities-section .cap-video {
+            flex: 0 0 80%;
+            scroll-snap-align: start;
+        }
+
+        .capabilities-section .cap-video video {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            border-radius: 0.75rem;
+            display: block;
+        }
+
+        .capabilities-section .cap-videos::-webkit-scrollbar {
+            display: none;
+        }
+        .capabilities-section .cap-videos {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     }
 
-    .capabilities-section video {
-        flex: 0 0 80%;
-        height: auto;
-        scroll-snap-align: start;
-        border-radius: 0.75rem;
-    }
-
-    /* Hide scrollbars cleanly */
-    .capabilities-section > div > .flex::-webkit-scrollbar {
-        display: none;
-    }
-
-    .capabilities-section > div > .flex {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
 
     /* --- Cards → single column --- */
     .capabilities-section .grid {

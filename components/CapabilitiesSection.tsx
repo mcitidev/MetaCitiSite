@@ -138,47 +138,118 @@ export function CapabilitiesSection() {
                     </p>
                 </motion.div>
 
+                {/* Mobile-only tap hint */}
+                <div className="md:hidden mb-3 text-sm text-gray-500 flex items-center gap-2">
+                    <span className="inline-block w-2 h-2 rounded-full bg-gray-400" />
+                    Tap video to play
+                </div>
+
+
                 {/* Small image row */}
-                <div className="flex gap-6 mb-8 mr-25">
+                <div className="cap-videos flex items-start gap-6 mb-8 mr-25">
+
 
                     {/* Video 1 */}
-                    <video
-                        src="otto1.mp4"
-                        muted
-                        playsInline
-                        preload="metadata"
-                        poster="/posters/otto1.png"
-                        onMouseEnter={(e) => e.currentTarget.play()}
-                        onMouseLeave={(e) => e.currentTarget.pause()}   // no reset
-                        onClick={handleTapToggle}                       // ← mobile-safe
-                        className="w-[35%] h-[35%] rounded-xl object-cover cursor-pointer"
-                    />
+                    <div className="cap-video basis-[35%] shrink-0 rounded-xl overflow-hidden relative">
+                        <video
+                            src="otto1.webm"
+                            muted
+                            playsInline
+                            preload="metadata"
+                            poster="/posters/otto1.png"
+
+                            onMouseEnter={(e) => {
+                                if (!isTouch) e.currentTarget.play();
+                            }}
+
+                            onMouseLeave={(e) => {
+                                if (!isTouch) e.currentTarget.pause(); // no reset
+                            }}
+
+                            onClick={(e) => {
+                                if (!isTouch) return;
+
+                                const video = e.currentTarget;
+                                if (video.paused) {
+                                    video.play();
+                                } else {
+                                    video.pause();
+                                }
+                            }}
+
+                            className="w-[35%] h-[35%] rounded-xl object-cover cursor-pointer"
+                        />
+
+                    </div>
+
 
                     {/* Video 2 */}
-                    <video
-                        src="otto2.mp4"
-                        muted
-                        playsInline
-                        preload="metadata"
-                        poster="/posters/otto2.png"
-                        onMouseEnter={(e) => e.currentTarget.play()}
-                        onMouseLeave={(e) => e.currentTarget.pause()}   // no reset
-                        onClick={handleTapToggle}                       // ← mobile-safe
-                        className="w-[35%] h-[35%] rounded-xl object-cover cursor-pointer"
-                    />
+                    <div className="cap-video basis-[35%] shrink-0 rounded-xl overflow-hidden relative">
+                        <video
+                            src="otto2.webm"
+                            muted
+                            playsInline
+                            preload="metadata"
+                            poster="/posters/otto1.png"
+
+                            onMouseEnter={(e) => {
+                                if (!isTouch) e.currentTarget.play();
+                            }}
+
+                            onMouseLeave={(e) => {
+                                if (!isTouch) e.currentTarget.pause(); // no reset
+                            }}
+
+                            onClick={(e) => {
+                                if (!isTouch) return;
+
+                                const video = e.currentTarget;
+                                if (video.paused) {
+                                    video.play();
+                                } else {
+                                    video.pause();
+                                }
+                            }}
+
+                            className="w-[35%] h-[35%] rounded-xl object-cover cursor-pointer"
+                        />
+
+                    </div>
+
 
                     {/* Video 3 */}
-                    <video
-                        src="otto23.mp4"
-                        muted
-                        playsInline
-                        preload="metadata"
-                        poster="/posters/otto23.png"
-                        onMouseEnter={(e) => e.currentTarget.play()}
-                        onMouseLeave={(e) => e.currentTarget.pause()}   // no reset
-                        onClick={handleTapToggle}                       // ← mobile-safe
-                        className="w-[35%] h-[35%] rounded-xl object-cover cursor-pointer"
-                    />
+                    <div className="cap-video basis-[35%] shrink-0 rounded-xl overflow-hidden relative">
+                        <video
+                            src="otto23.webm"
+                            muted
+                            playsInline
+                            preload="metadata"
+                            poster="/posters/otto1.png"
+
+                            onMouseEnter={(e) => {
+                                if (!isTouch) e.currentTarget.play();
+                            }}
+
+                            onMouseLeave={(e) => {
+                                if (!isTouch) e.currentTarget.pause(); // no reset
+                            }}
+
+                            onClick={(e) => {
+                                if (!isTouch) return;
+
+                                const video = e.currentTarget;
+                                if (video.paused) {
+                                    video.play();
+                                } else {
+                                    video.pause();
+                                }
+                            }}
+
+                            className="w-[35%] h-[35%] rounded-xl object-cover cursor-pointer"
+                        />
+
+                    </div>
+
 
                 </div>
 
@@ -188,9 +259,9 @@ export function CapabilitiesSection() {
                     {capabilities.map((capability, index) => (
                         <motion.div
                             key={capability.title}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            initial={{opacity: 0, y: 20}}
+                            whileInView={{opacity: 1, y: 0}}
+                            viewport={{once: true }}
                             transition={{ duration: 0.5, delay: index * 0.08 }}
                             className="group cursor-pointer"
                         >
