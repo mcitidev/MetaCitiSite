@@ -6,6 +6,7 @@ import { Navbar } from "@/components/navbar";
 export function Hero() {
   return (
       <section className="
+      hero-section
   min-h-[90vh]
   lg:min-h-screen
   2xl:min-h-[95vh]

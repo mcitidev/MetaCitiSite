@@ -39,11 +39,13 @@ const capabilities = [
 
 ];
 
+
+
 export function CapabilitiesSection() {
     return (
         <section
             id="capabilities"
-            className="py-3 lg:py-15 bg-gradient-to-br from-[#f0f9ff] via-white to-[#f0f9ff] relative overflow-hidden"
+            className="capabilities-section py-3 lg:py-15 bg-gradient-to-br from-[#f0f9ff] via-white to-[#f0f9ff] relative overflow-hidden"
         >
             {/* Decorative blobs */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-red-100 rounded-full blur-3xl opacity-30 -z-0" />

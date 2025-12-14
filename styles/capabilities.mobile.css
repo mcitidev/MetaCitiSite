@@ -1,0 +1,112 @@
+/* =========================================================
+   CAPABILITIES — MOBILE & TABLET OVERRIDES
+   Scoped to .capabilities-section
+   ========================================================= */
+
+/* ---------- Mobile (phones) ---------- */
+@media (max-width: 640px) {
+    .capabilities-section {
+        padding-top: 3.5rem;
+        padding-bottom: 4rem;
+    }
+
+    /* Section header tightening */
+    .capabilities-section h2 {
+        font-size: 2rem;
+        line-height: 1.15;
+    }
+
+    .capabilities-section p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .capabilities-section .text-left {
+        margin-bottom: 2.5rem;
+    }
+
+    /* --- Video row → horizontal scroll --- */
+    .capabilities-section > div > .flex {
+        display: flex;
+        overflow-x: auto;
+        gap: 1rem;
+        padding-bottom: 0.5rem;
+        margin-right: 0;
+        scroll-snap-type: x mandatory;
+    }
+
+    .capabilities-section video {
+        flex: 0 0 80%;
+        height: auto;
+        scroll-snap-align: start;
+        border-radius: 0.75rem;
+    }
+
+    /* Hide scrollbars cleanly */
+    .capabilities-section > div > .flex::-webkit-scrollbar {
+        display: none;
+    }
+
+    .capabilities-section > div > .flex {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    /* --- Cards → single column --- */
+    .capabilities-section .grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+    }
+
+    .capabilities-section .group > div {
+        padding: 1.25rem;
+    }
+
+    /* Icon + title tightening */
+    .capabilities-section h3 {
+        font-size: 1.125rem;
+    }
+
+    .capabilities-section svg {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+
+    /* Reduce hover motion on mobile */
+    .capabilities-section .group:hover > div {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+/* ---------- Small tablets ---------- */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .capabilities-section {
+        padding-top: 4.5rem;
+        padding-bottom: 5rem;
+    }
+
+    /* Header scale */
+    .capabilities-section h2 {
+        font-size: 2.5rem;
+    }
+
+    /* Video row stays horizontal but larger */
+    .capabilities-section > div > .flex {
+        gap: 1.25rem;
+    }
+
+    .capabilities-section video {
+        flex: 0 0 45%;
+    }
+
+    /* Cards → two columns */
+    .capabilities-section .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+    }
+
+    .capabilities-section .group > div {
+        padding: 1.5rem;
+    }
+}

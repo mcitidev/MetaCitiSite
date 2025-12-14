@@ -3,6 +3,8 @@ import type { Metadata } from "next"
 import { Suspense } from "react"
 import "./globals.css"
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import "@/styles/hero.mobile.css";
+import "@/styles/capabilities.mobile.css";
 
 
 export const metadata: Metadata = {

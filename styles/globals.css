@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@import "./hero.mobile.css";
+@import "./capabilities.mobile.css";
 
 @custom-variant dark (&:is(.dark *));
 
