@@ -34,17 +34,19 @@ export function Navbar() {
                 <div className="navbar-row flex items-center justify-between h-20">
 
                     {/* Logo Area */}
-                    <div className="flex items-center gap-3">
+                    <button
+                        onClick={() => scrollToSection("home")}
+                        className="flex items-center gap-3 cursor-pointer"
+                        aria-label="Go to top"
+                    >
                         <Image
                             src="/ottologo.png"
                             alt="Ottonomi Logo"
-                            width={150}  // adjust as needed
-                            height={50}  // adjust as needed
+                            width={150}
+                            height={50}
                             className="object-contain"
                         />
-                        <span className="text-gray-900 font-semibold text-lg tracking-tight">
-            </span>
-                    </div>
+                    </button>
 
                     {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center gap-8 text-gray-700 font-medium">
@@ -93,7 +95,7 @@ export function Navbar() {
                         <div className="flex flex-col gap-4 text-gray-700 font-medium">
 
 
-                            <button onClick={() => scrollToSection("home")}
+                        <button onClick={() => scrollToSection("home")}
                                     className="hover:text-gray-900 transition-colors">Home
                             </button>
                             <button onClick={() => scrollToSection("capabilities")}
