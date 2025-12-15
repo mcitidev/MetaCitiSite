@@ -1,0 +1,114 @@
+/* =========================================================
+   SECTORS — MOBILE & TABLET OVERRIDES (FINAL)
+   Scoped to #sectors
+   ========================================================= */
+
+/* ---------- Mobile (phones) ---------- */
+@media (max-width: 640px) {
+    /* Section spacing */
+    #sectors {
+        padding-top: 3rem;
+        padding-bottom: 4rem;
+    }
+
+    /* Collapse main layout to single column */
+    #sectors .grid.lg\:grid-cols-2 {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    /* Text column containment */
+    #sectors .space-y-12 {
+        max-width: 36rem;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 2rem;
+    }
+
+    /* Headline */
+    #sectors h2 {
+        font-size: 2.25rem;
+        line-height: 1.15;
+        letter-spacing: -0.01em;
+    }
+
+    /* Body copy */
+    #sectors p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    /* ===============================
+       PILL GRID — KEEP 2-UP GRID
+       =============================== */
+
+    #sectors .grid.grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+        padding: 0;
+        max-width: 34rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Individual pill cards */
+    #sectors .grid.grid-cols-2 > div {
+        padding: 0.9rem 1rem;
+        border-radius: 0.75rem;
+        background: #f3f4f6;
+        border: 1px solid #e5e7eb;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+    }
+
+    /* Icon sizing */
+    #sectors .grid.grid-cols-2 svg {
+        width: 1.15rem;
+        height: 1.15rem;
+        flex-shrink: 0;
+    }
+
+    /* Text sizing */
+    #sectors .grid.grid-cols-2 span {
+        font-size: 0.9rem;
+        font-weight: 500;
+        line-height: 1.25;
+    }
+
+    /* Allow final pill to span full width */
+    #sectors .col-span-2 {
+        grid-column: span 2;
+    }
+}
+
+/* ---------- Tablet (portrait) ---------- */
+@media (min-width: 641px) and (max-width: 1024px) {
+    #sectors {
+        padding-top: 4rem;
+        padding-bottom: 5rem;
+    }
+
+    #sectors .grid.lg\:grid-cols-2 {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+    }
+
+    #sectors h2 {
+        font-size: 3rem;
+        line-height: 1.15;
+    }
+
+    #sectors p {
+        font-size: 1.125rem;
+        line-height: 1.6;
+    }
+
+    #sectors .grid.grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 40rem;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 1rem;
+    }
+}

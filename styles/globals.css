@@ -2,6 +2,7 @@
 @import 'tw-animate-css';
 @import "./hero.mobile.css";
 @import "./capabilities.mobile.css";
+@import "./sectors.mobile.css";
 
 @custom-variant dark (&:is(.dark *));
 
