@@ -6,6 +6,9 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@/styles/hero.mobile.css";
 import "@/styles/capabilities.mobile.css";
 import "@/styles/sectors.mobile.css";
+import "@/styles/fieDash.mobile.css";
+import "@/styles/benefits.mobile.css";
+import "@/styles/navbar.mobile.css";
 
 
 export const metadata: Metadata = {

@@ -12,12 +12,14 @@ import { BenefitsSection } from "@/components/benefits";
 import { SectorsSection } from "@/components/SectorsSection"
 import { CapabilitiesSection } from "@/components/CapabilitiesSection";
 import { UnifiedDashboard } from "@/components/UnifiedDashboard";
+import {Navbar} from "@/components/navbar";
 
 
 
 export default function HomePage() {
   return (
     <main className="min-h-screen">
+        <Navbar/>
       <Hero />
         {/*Remove about section and remove it into a separate page called About or "Company"*/}
         {/*<About />*/}

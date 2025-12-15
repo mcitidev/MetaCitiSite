@@ -1,0 +1,42 @@
+/* =========================================================
+   NAVBAR — MOBILE OVERRIDES (CLEAN + SCOPED)
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+    /* Inner padding */
+    .navbar-inner {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Row alignment */
+    .navbar-row {
+        gap: 0.75rem;
+    }
+
+    /* Logo sizing */
+    .navbar img[alt="Ottonomi Logo"] {
+        width: 180px; /* up from 150 */
+        height: auto;
+    }
+
+    /* Hamburger alignment */
+    .navbar-toggle {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Hamburger tap target */
+    .navbar-toggle svg {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+
+    /* Reduce navbar height slightly */
+    .navbar .h-20 {
+        height: 4.5rem;
+    }
+}

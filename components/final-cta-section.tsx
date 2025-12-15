@@ -6,7 +6,7 @@ import { Button } from './ui/button';
 
 export function FinalCtaSection() {
   return (
-      <section className="
+      <section id="contact" className="
     py-15 lg:py-20
     bg-gradient-to-br
     from-[#0f172a] via-[#1e293b] to-[#334155]

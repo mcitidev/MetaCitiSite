@@ -5,8 +5,9 @@ import { Navbar } from "@/components/navbar";
 
 export function Hero() {
   return (
-      <section className="
+      <section id = "home" className="
       hero-section
+
   min-h-[90vh]
   lg:min-h-screen
   2xl:min-h-[95vh]
@@ -23,7 +24,7 @@ export function Hero() {
 ">
 
         {/* NAVBAR */}
-        <Navbar/>
+        {/*<Navbar/>*/}
         <div
             className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-white via-white/80 to-transparent pointer-events-none"/>
 

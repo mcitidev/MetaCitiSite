@@ -3,6 +3,9 @@
 @import "./hero.mobile.css";
 @import "./capabilities.mobile.css";
 @import "./sectors.mobile.css";
+@import "./fieDash.mobile.css";
+@import "./benefits.mobile.css";
+@import "./navbar.mobile.css";
 
 @custom-variant dark (&:is(.dark *));
 

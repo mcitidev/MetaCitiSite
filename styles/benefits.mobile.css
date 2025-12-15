@@ -1,0 +1,95 @@
+/* =========================================================
+   BENEFITS — MOBILE & TABLET OVERRIDES (MATCH OTHER SECTIONS)
+   Scoped to #benefits
+   ========================================================= */
+
+/* ---------- Mobile (phones) ---------- */
+/* ---------- Mobile (phones) ---------- */
+@media (max-width: 640px) {
+
+    /* ===============================
+       SECTION SPACING
+       =============================== */
+    #benefits {
+        padding-top: 2rem;
+        padding-bottom: 4.5rem;
+    }
+
+    #benefits .container {
+        padding-top: 0;
+    }
+
+    /* ===============================
+       HEADER / IMPACT PILL
+       =============================== */
+    #benefits .inline-block {
+        margin-bottom: 1.5rem;
+    }
+
+    #benefits h2 {
+        font-size: 2.25rem;
+        line-height: 1.15;
+        letter-spacing: -0.01em;
+    }
+
+    #benefits .max-w-3xl {
+        margin-bottom: 2.5rem;
+    }
+
+    /* ===============================
+       BENEFITS — STACKED CARDS ONLY
+       =============================== */
+    #benefits .grid.lg\:grid-cols-4 {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        margin-bottom: 4.5rem;
+    }
+
+    #benefits .grid.lg\:grid-cols-4 > div > div {
+        padding: 1.5rem;
+        border-radius: 1.25rem;
+    }
+
+    #benefits .grid.lg\:grid-cols-4 .w-12 {
+        width: 3rem;
+        height: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    #benefits .grid.lg\:grid-cols-4 svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    /* Benefit card titles ONLY */
+    #benefits .grid.lg\:grid-cols-4 h3 {
+        font-size: 1.15rem;
+        margin-bottom: 0.4rem;
+    }
+
+    #benefits .grid.lg\:grid-cols-4 p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+}
+
+
+/* ---------- Tablet (portrait) ---------- */
+@media (min-width: 641px) and (max-width: 1024px) {
+    #benefits {
+        padding-top: 4.5rem;
+        padding-bottom: 5.5rem;
+    }
+
+    #benefits h2 {
+        font-size: 3rem;
+    }
+
+    /* Restore 2-up cards on tablet */
+    #benefits .grid.lg\:grid-cols-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 5rem;
+    }
+}
