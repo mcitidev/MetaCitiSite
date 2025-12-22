@@ -10,12 +10,12 @@ interface UnifiedDashboardProps {
 
 export function UnifiedDashboard({ image }: UnifiedDashboardProps) {
     const features = [
-        { icon: Video, text: 'Live video feeds with AI overlays' },
-        { icon: Bell, text: 'Real-time alerts and notifications' },
-        { icon: Map, text: 'Live Digital Twin Maps' },
-        { icon: History, text: 'Historical event replay' },
-        { icon: TrendingUp, text: 'Congestion pattern monitoring' },
-        { icon: Monitor, text: 'Multi-camera tracking' },
+        { icon: Video, text: 'Live Digital Twin Operational Views' },
+        { icon: Bell, text: 'Real-Time Alerts & Notifications' },
+        { icon: Map, text: 'Multi-Camera Monitoring & Tracking' },
+        { icon: History, text: 'Incident Review & Event Replay' },
+        { icon: TrendingUp, text: 'Traffic & Congestion Analysis' },
+        { icon: Monitor, text: 'Operational Performance Metrics' },
     ];
 
     return (
@@ -81,16 +81,16 @@ export function UnifiedDashboard({ image }: UnifiedDashboardProps) {
                         <div>
                             <div
                                 className="inline-block text-xl px-4 py-2 rounded-full bg-[#93c5fd]/20 text-[#93c5fd] border border-white/30 mb-6">
-                                Unified Dashboard
+                                Unified Operations Dashboard
                             </div>
                             <h2 className="text-4xl lg:text-5xl text-white mb-6">
-                                One Interface for{' '}
-                                <span className="text-[#93c5fd]">Complete Visibility</span>
+                                A single operational interface for
+                                {' '}
+                                <span className="text-[#93c5fd]">traffic and mobility management</span>
                             </h2>
                             <p className="text-xl text-white leading-relaxed">
-                                Operators can utilize the MetaCiti dashboard to track movement
-                                across multiple cameras, review past events, monitor congestion patterns, and respond
-                                to incidents instantly.
+                                A live digital twin–based interface supporting real-time monitoring, incident response,
+                                and operational decision support across transportation networks.
                             </p>
                         </div>
 

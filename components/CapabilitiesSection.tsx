@@ -28,15 +28,21 @@ const capabilities = [
 
     /*Need to revise below icons so that they match as much as possible*/
 
-    { icon: CarFront, title: "Stalled Vehicles", description: "Instant detection of stopped or disabled vehicles" },
-    { icon: AlertTriangle, title: "Debris Alerts", description: "Real-time identification of obstacles on the roadway" },
-    { icon: UserX, title: "Wrong-Way Driving", description: "Immediate alerts for dangerous counter-flow movement" },
+    { icon: CarFront, title: "Stalled Vehicles & Lane Blockages", description: "Instant detection of stopped or disabled vehicles" },
+    { icon: AlertTriangle, title: "Debris & Roadway Hazard Detection", description: "Real-time identification of obstacles on the roadway" },
+    { icon: UserX, title: "Wrong-Way & Risky Driving Detection", description: "Immediate alerts for dangerous counter-flow movement" },
     { icon: Truck, title: "Flow Analytics", description: "Live insights into traffic speed, volume, and density" },
-    { icon: BarChart3, title: "Congestion Maps", description: "Clear visualization of bottlenecks across the network" },
-    { icon: Zap, title: "Movement Tracking", description: "Multi-modal tracking of vehicles, pedestrians, and cyclists" },
-    { icon: Target, title: "Heatmaps", description: "Activity heatmaps showing high-traffic zones at a glance" },
-    { icon: Repeat1, title: "Event Replay", description: "Timestamped video playback for incident reconstruction" },
-    { icon: Layers, title: "VMS Integration", description: "Direct connection to roadside signs for automated messaging" },
+    { icon: BarChart3, title: "Near-Miss & Conflict Analytics (Vision Zero)", description: "Clear visualization of bottlenecks across the network" },
+    { icon: Zap, title: "Traffic Flow & Speed Analytics", description: "Multi-modal tracking of vehicles, pedestrians, and cyclists" },
+    { icon: Target, title: "Congestion Maps & Bottleneck Analysis", description: "Activity heatmaps showing high-traffic zones at a glance" },
+    { icon: Repeat1, title: "Multimodal Movement Tracking", description: "Timestamped video playback for incident reconstruction" },
+    { icon: Layers, title: "Intersection Performance Monitoring (ATSPM-Adjacent)", description: "Direct connection to roadside signs for automated messaging" },
+    { icon: Layers, title: "Transit Priority & Service Reliability Support", description: "Direct connection to roadside signs for automated messaging" },
+    { icon: Layers, title: "Emergency Vehicle Priority Support", description: "Direct connection to roadside signs for automated messaging" },
+    { icon: Layers, title: "Event Replay & Incident Review", description: "Direct connection to roadside signs for automated messaging" },
+
+
+
 
 ];
 
@@ -314,10 +320,10 @@ export function CapabilitiesSection() {
                                     </h3>
                                 </div>
 
-                                {/* Description */}
+                                {/* Description
                                 <p className="2xl:text-xl text-gray-600 font-medium leading-relaxed relative z-10">
                                     {capability.description}
-                                </p>
+                                </p>*/}
 
                             </div>
                         </motion.div>
