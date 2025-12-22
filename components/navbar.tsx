@@ -5,6 +5,8 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 //import { OttonomiLogo } from "@/components/ottonomi-logo";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
 
 function scrollToSection(id: string, closeMenu?: () => void) {
     const el = document.getElementById(id);
@@ -27,6 +29,8 @@ function scrollToSection(id: string, closeMenu?: () => void) {
 
 export function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
+    const router = useRouter();
+
 
     return (
         <header className="navbar fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 z-50">
@@ -68,11 +72,17 @@ export function Navbar() {
                         <button onClick={() => scrollToSection("contact")}
                                 className="hover:text-gray-900 transition-colors">Contact
                         </button>
+                        <button
+                            onClick={() => router.push("/sectors")}
+                            className="hover:text-gray-900 transition-colors"
+                        >
+                            Sectors
+                        </button>
                     </div>
 
                     {/* Desktop CTA */}
                     <div className="hidden lg:flex items-center gap-4">
-                        <Link
+                    <Link
                             href="#demo"
                             className="px-5 py-2 rounded-md bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-md transition"
                         >
@@ -95,7 +105,7 @@ export function Navbar() {
                         <div className="flex flex-col gap-4 text-gray-700 font-medium">
 
 
-                        <button onClick={() => scrollToSection("home")}
+                            <button onClick={() => scrollToSection("home")}
                                     className="hover:text-gray-900 transition-colors">Home
                             </button>
                             <button onClick={() => scrollToSection("capabilities")}
@@ -113,9 +123,17 @@ export function Navbar() {
                             <button onClick={() => scrollToSection("contact")}
                                     className="hover:text-gray-900 transition-colors">Contact
                             </button>
+                            <button
+                                onClick={() => {
+                                    setMobileOpen(false);
+                                    router.push("/sectors");
+                                }}
+                            >
+                                Sectors
+                            </button>
 
                             <div className="pt-4 border-t border-gray-200 flex flex-col gap-3">
-                            <Link
+                                <Link
                                     href="#demo"
                                     className="w-full text-center px-5 py-3 rounded-md bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-md transition"
                                 >
