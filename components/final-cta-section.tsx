@@ -3,9 +3,14 @@
 import { motion } from 'motion/react';
 import { ArrowRight, CheckCircle2, Calendar } from 'lucide-react';
 import { Button } from './ui/button';
+import { RequestDemoModal } from "./ReqDemoModal";
+import {useState} from "react";
+
 
 export function FinalCtaSection() {
+  const [open, setOpen] = useState(false);
   return (
+      <>
       <section id="contact" className="
     py-15 lg:py-20
     bg-gradient-to-br
@@ -51,6 +56,7 @@ export function FinalCtaSection() {
             <div className="flex flex-wrap justify-center gap-6">
               <Button
                   size="xl"
+                  onClick={() => setOpen(true)}
                   className="bg-white hover:bg-gray-50 text-red-600 hover:text-white hover:border hover:border-white hover:border-2 px-12 shadow-2xl group text-lg h-16 hover:bg-white/10 transition-all duration-300 hover:scale-105"
               >
                 Request Demo
@@ -92,5 +98,7 @@ export function FinalCtaSection() {
           </motion.div>
         </div>
       </section>
+  <RequestDemoModal open={open} onClose={() => setOpen(false)} />
+  </>
   );
 }
