@@ -1,30 +1,36 @@
+"use client";
+
 import { Button } from "./ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { DashboardShowcase } from "./DashboardShowcase";
 import { Navbar } from "@/components/navbar";
+import { RequestDemoModal } from "./ReqDemoModal";
+import {useState} from "react";
+
 
 export function Hero() {
-  return (
-      <section id = "home" className="
-      hero-section
+  const [demoOpen, setDemoOpen] = useState(false);
 
-  min-h-[90vh]
-  lg:min-h-screen
-  2xl:min-h-[95vh]
-  pt-24
-  lg:pt-28
-  2xl:pt-48
-  pb-20
-  lg:pb-24
-  px-6
-  lg:px-8
-  bg-white
-  relative
-  overflow-hidden
-">
+  return (
+      <>
+      <section id = "home" className="
+              hero-section
+              min-h-[90vh]
+              lg:min-h-screen
+              2xl:min-h-[95vh]
+              pt-24
+              lg:pt-28
+              2xl:pt-48
+              pb-20
+              lg:pb-24
+              px-6
+              lg:px-8
+              bg-white
+              relative
+              overflow-hidden
+            ">
 
         {/* NAVBAR */}
-        {/*<Navbar/>*/}
         <div
             className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-white via-white/80 to-transparent pointer-events-none"/>
 
@@ -102,8 +108,20 @@ export function Hero() {
               </div>
 
               <div className="space-y-6">
-                <h1 className="text-black font-semibold text-5xl 2xl:text-6xl">
-                  MetaCiti — AI Platform for Urban Mobility & Traffic Intelligence
+                <h1 className="
+  font-space-grotesk
+  font-extrabold
+  tracking-tight
+  leading-[1.05]
+  text-5xl
+  xl:text-6xl
+  2xl:text-7xl
+  text-black
+">
+                  MetaCiti
+                  <span className="block text-gray-900">
+    AI Platform for Urban Mobility
+  </span>
                 </h1>
                 <p className="text-black max-w-xl text-lg lg:text-xl">
                   MetaCiti AI transforms city and highway cameras into a live digital map enabling safety alerts,
@@ -115,6 +133,7 @@ export function Hero() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
+                    onClick={() => setDemoOpen(true)}
                     size="lg"
                     className="px-5 py-2 rounded-md bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-md transition"
                 >
@@ -154,5 +173,10 @@ export function Hero() {
           </div>
         </div>
       </section>
-  );
+  <RequestDemoModal
+      open={demoOpen}
+      onClose={() => setDemoOpen(false)}
+  />
+      </>
+);
 }

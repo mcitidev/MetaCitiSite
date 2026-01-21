@@ -24,16 +24,41 @@ export function RequestDemoModal({ open, onClose }: Props) {
 
         const form = e.currentTarget;
 
+        const serviceId = "service_ix9fb5l";
+        const notifyTemplateId = "template_epq7ws9";
+        const autoReplyTemplateId = "template_6sdhun7";
+        const publicKey = "cpMkUDj7u-FLM6-hI";
+
+        // Pull values once (important)
+        const formData = {
+            name: (form.elements.namedItem("name") as HTMLInputElement).value,
+            email: (form.elements.namedItem("email") as HTMLInputElement).value,
+            organization: (form.elements.namedItem("organization") as HTMLInputElement)?.value,
+            message: (form.elements.namedItem("message") as HTMLTextAreaElement)?.value,
+        };
+
         try {
-            await emailjs.sendForm(
-                "YOUR_SERVICE_ID",
-                "YOUR_TEMPLATE_ID",
-                form,
-                "YOUR_PUBLIC_KEY"
+            await emailjs.send(
+                serviceId,
+                notifyTemplateId,
+                formData,
+                publicKey
             );
+            // Send user confirmation email
+            await emailjs.send(
+                serviceId,
+                autoReplyTemplateId,
+                {
+                    name: formData.name,
+                    email: formData.email,
+                },
+                publicKey
+            );
+
             setSent(true);
             form.reset();
-        } catch {
+        } catch (err){
+            console.error(err);
             setError(true);
         } finally {
             setSending(false);

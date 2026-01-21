@@ -6,6 +6,8 @@ import { Menu, X } from "lucide-react";
 //import { OttonomiLogo } from "@/components/ottonomi-logo";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { RequestDemoModal } from "./ReqDemoModal";
+
 
 
 function scrollToSection(id: string, closeMenu?: () => void) {
@@ -30,10 +32,13 @@ function scrollToSection(id: string, closeMenu?: () => void) {
 export function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
     const router = useRouter();
+    const [demoOpen, setDemoOpen] = useState(false);
+
 
 
     return (
-        <header className="navbar fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 z-50">
+        <>
+        <header className="navbar fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 z-[9999]">
             <nav className="navbar-inner max-w-7xl mx-auto px-6 lg:px-8">
                 <div className="navbar-row flex items-center justify-between h-20">
 
@@ -55,26 +60,90 @@ export function Navbar() {
                     {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center gap-8 text-gray-700 font-medium">
                         <button onClick={() => scrollToSection("home")}
-                                className="hover:text-gray-900 transition-colors">Home
+                                className="
+                                    relative
+                                    cursor-pointer
+                                    text-gray-700
+                                    transition-all duration-50
+                                    hover:font-bold
+                                    hover:text-red-700
+                                    hover:-translate-y-[1px]
+                                    focus-visible:outline-none
+                                  ">Home
                         </button>
                         <button onClick={() => scrollToSection("capabilities")}
-                                className="hover:text-gray-900 transition-colors">Capabilities
+                                className="
+                                    relative
+                                    cursor-pointer
+                                    text-gray-700
+                                    transition-all duration-50
+                                    hover:font-bold
+                                    hover:text-red-700
+                                    hover:-translate-y-[1px]
+                                    focus-visible:outline-none
+
+                                  ">Capabilities
                         </button>
                         <button onClick={() => scrollToSection("sectors")}
-                                className="hover:text-gray-900 transition-colors">Sectors
+                                className="
+                                    relative
+                                    cursor-pointer
+                                    text-gray-700
+                                    transition-all duration-50
+                                    hover:font-bold
+                                    hover:text-red-700
+                                    hover:-translate-y-[1px]
+                                    focus-visible:outline-none
+                                  ">Sectors
                         </button>
                         <button onClick={() => scrollToSection("dashboard")}
-                                className="hover:text-gray-900 transition-colors">Dashboard
+                                className="
+                                    relative
+                                    cursor-pointer
+                                    text-gray-700
+                                    transition-all duration-50
+                                    hover:font-bold
+                                    hover:text-red-700
+                                    hover:-translate-y-[1px]
+                                    focus-visible:outline-none
+                                  ">Dashboard
                         </button>
                         <button onClick={() => scrollToSection("benefits")}
-                                className="hover:text-gray-900 transition-colors">Benefits
+                                className="
+                                    relative
+                                    cursor-pointer
+                                    text-gray-700
+                                    transition-all duration-50
+                                    hover:font-bold
+                                    hover:text-red-700
+                                    hover:-translate-y-[1px]
+                                    focus-visible:outline-none
+                                  ">Benefits
                         </button>
                         <button onClick={() => scrollToSection("contact")}
-                                className="hover:text-gray-900 transition-colors">Contact
+                                className="
+                                    relative
+                                    cursor-pointer
+                                    text-gray-700
+                                    transition-all duration-50
+                                    hover:font-bold
+                                    hover:text-red-700
+                                    hover:-translate-y-[1px]
+                                    focus-visible:outline-none
+                                  ">Contact
                         </button>
                         <button
                             onClick={() => router.push("/sectors")}
-                            className="hover:text-gray-900 transition-colors"
+                            className="
+                                    relative
+                                    cursor-pointer
+                                    text-gray-700
+                                    transition-all duration-50
+                                    hover:font-bold
+                                    hover:text-red-700
+                                    hover:-translate-y-[1px]
+                                    focus-visible:outline-none
+                                  "
                         >
                             Use Cases
                         </button>
@@ -82,12 +151,12 @@ export function Navbar() {
 
                     {/* Desktop CTA */}
                     <div className="hidden lg:flex items-center gap-4">
-                    <Link
-                            href="#demo"
+                    <button
+                            onClick={() => setDemoOpen(true)}
                             className="px-5 py-2 rounded-md bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-md transition"
                         >
                             Request Demo
-                        </Link>
+                        </button>
                     </div>
 
                     {/* Mobile Toggle */}
@@ -133,17 +202,26 @@ export function Navbar() {
                             </button>
 
                             <div className="pt-4 border-t border-gray-200 flex flex-col gap-3">
-                                <Link
-                                    href="#demo"
+                                <button
+                                    onClick={() => {
+                                        setMobileOpen(false);
+                                        setDemoOpen(true);
+                                    }}
                                     className="w-full text-center px-5 py-3 rounded-md bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-md transition"
                                 >
                                     Request Demo
-                                </Link>
+                                </button>
                             </div>
                         </div>
                     </div>
                 )}
             </nav>
         </header>
+    <RequestDemoModal
+        open={demoOpen}
+        onClose={() => setDemoOpen(false)}
+    />
+    </>
+
     );
 }
