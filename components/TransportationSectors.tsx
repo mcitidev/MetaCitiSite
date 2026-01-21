@@ -81,7 +81,7 @@ export function TransportationSectors() {
                 {/* Header */}
                 <div className="text-center max-w-4xl mx-auto mb-16">
                     <div className="inline-block px-6 py-2 rounded-full bg-red-100 text-red-700 font-medium mb-6">
-                        Our Sectors
+                        Existing Deployments
                     </div>
 
                     <h2 className="text-4xl lg:text-5xl font-semibold text-gray-900 mb-6">

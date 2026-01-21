@@ -76,7 +76,7 @@ export function Navbar() {
                             onClick={() => router.push("/sectors")}
                             className="hover:text-gray-900 transition-colors"
                         >
-                            Sectors
+                            Use Cases
                         </button>
                     </div>
 

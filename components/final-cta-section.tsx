@@ -76,15 +76,15 @@ export function FinalCtaSection() {
             >
               <div className="grid md:grid-cols-3 gap-12 text-center">
                 <div>
-                  <div className="text-5xl lg:text-6xl text-white mb-3">500+</div>
-                  <div className="text-white/80 text-lg">Cities Deployed</div>
+                  <div className="text-5xl lg:text-6xl text-white mb-3">3</div>
+                  <div className="text-white/80 text-lg">Countries Deployed</div>
                 </div>
                 <div>
-                  <div className="text-5xl lg:text-6xl text-white mb-3">10M+</div>
+                  <div className="text-5xl lg:text-6xl text-white mb-3">1M+</div>
                   <div className="text-white/80 text-lg">Daily Detections</div>
                 </div>
                 <div>
-                  <div className="text-5xl lg:text-6xl text-white mb-3">99.9%</div>
+                  <div className="text-5xl lg:text-6xl text-white mb-3">90%</div>
                   <div className="text-white/80 text-lg">Accuracy Rate</div>
                 </div>
               </div>
