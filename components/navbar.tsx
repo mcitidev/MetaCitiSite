@@ -28,6 +28,22 @@ function scrollToSection(id: string, closeMenu?: () => void) {
     if (closeMenu) closeMenu();
 }
 
+function scrollOrNavigate(
+    id: string,
+    router: ReturnType<typeof useRouter>,
+    closeMenu?: () => void
+) {
+    // If we're NOT on the homepage, navigate there with a hash
+    if (window.location.pathname !== "/") {
+        router.push(`/#${id}`);
+        if (closeMenu) closeMenu();
+        return;
+    }
+
+    // Otherwise, smooth scroll normally
+    scrollToSection(id, closeMenu);
+}
+
 
 export function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -44,7 +60,7 @@ export function Navbar() {
 
                     {/* Logo Area */}
                     <button
-                        onClick={() => scrollToSection("home")}
+                        onClick={() => scrollOrNavigate("home", router)}
                         className="flex items-center gap-3 cursor-pointer"
                         aria-label="Go to top"
                     >
@@ -59,7 +75,7 @@ export function Navbar() {
 
                     {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center gap-8 text-gray-700 font-medium">
-                        <button onClick={() => scrollToSection("home")}
+                        <button onClick={() => scrollOrNavigate("home", router)}
                                 className="
                                     relative
                                     cursor-pointer
@@ -71,7 +87,7 @@ export function Navbar() {
                                     focus-visible:outline-none
                                   ">Home
                         </button>
-                        <button onClick={() => scrollToSection("capabilities")}
+                        <button onClick={() => scrollOrNavigate("capabilities", router)}
                                 className="
                                     relative
                                     cursor-pointer
@@ -84,7 +100,7 @@ export function Navbar() {
 
                                   ">Capabilities
                         </button>
-                        <button onClick={() => scrollToSection("sectors")}
+                        <button onClick={() => scrollOrNavigate("sectors", router)}
                                 className="
                                     relative
                                     cursor-pointer
@@ -96,7 +112,7 @@ export function Navbar() {
                                     focus-visible:outline-none
                                   ">Sectors
                         </button>
-                        <button onClick={() => scrollToSection("dashboard")}
+                        <button onClick={() => scrollOrNavigate("dashboard", router)}
                                 className="
                                     relative
                                     cursor-pointer
@@ -108,7 +124,7 @@ export function Navbar() {
                                     focus-visible:outline-none
                                   ">Dashboard
                         </button>
-                        <button onClick={() => scrollToSection("benefits")}
+                        <button onClick={() => scrollOrNavigate("benefits", router)}
                                 className="
                                     relative
                                     cursor-pointer
@@ -120,7 +136,7 @@ export function Navbar() {
                                     focus-visible:outline-none
                                   ">Benefits
                         </button>
-                        <button onClick={() => scrollToSection("contact")}
+                        <button onClick={() => scrollOrNavigate("contact", router)}
                                 className="
                                     relative
                                     cursor-pointer
@@ -174,22 +190,28 @@ export function Navbar() {
                         <div className="flex flex-col gap-4 text-gray-700 font-medium">
 
 
-                            <button onClick={() => scrollToSection("home")}
+                            <button onClick={() => scrollOrNavigate("home", router, () => setMobileOpen(false))
+                            }
                                     className="hover:text-gray-900 transition-colors">Home
                             </button>
-                            <button onClick={() => scrollToSection("capabilities")}
+                            <button onClick={() => scrollOrNavigate("capabilities", router, () => setMobileOpen(false))
+                            }
                                     className="hover:text-gray-900 transition-colors">Capabilities
                             </button>
-                            <button onClick={() => scrollToSection("sectors")}
+                            <button onClick={() => scrollOrNavigate("sectors", router, () => setMobileOpen(false))
+                            }
                                     className="hover:text-gray-900 transition-colors">Sectors
                             </button>
-                            <button onClick={() => scrollToSection("dashboard")}
+                            <button onClick={() => scrollOrNavigate("dashboard", router, () => setMobileOpen(false))
+                            }
                                     className="hover:text-gray-900 transition-colors">Dashboard
                             </button>
-                            <button onClick={() => scrollToSection("benefits")}
+                            <button onClick={() => scrollOrNavigate("benefits", router, () => setMobileOpen(false))
+                            }
                                     className="hover:text-gray-900 transition-colors">Benefits
                             </button>
-                            <button onClick={() => scrollToSection("contact")}
+                            <button onClick={() => scrollOrNavigate("contact", router, () => setMobileOpen(false))
+                            }
                                     className="hover:text-gray-900 transition-colors">Contact
                             </button>
                             <button
