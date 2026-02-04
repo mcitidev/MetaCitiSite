@@ -291,15 +291,14 @@ export function CapabilitiesSection() {
                                 />
 
                                 {/* === ICON + TITLE ROW === */}
-                                <div className="flex items-center gap-4 mb-5 relative z-10">
+                                <div className="flex items-start gap-4 mb-5 relative z-10">
 
                                     {/* Icon bubble */}
                                     <div
                                         className="
-                            w-15 h-15 rounded-xl
-                            bg-gradient-to-br from-red-600/20 to-red-600/10
-                            text-red-600
-                            flex items-center justify-center
+                            w-14 h-14 aspect-square shrink-0 rounded-xl
+    bg-gradient-to-br from-red-600/20 to-red-600/10
+    text-red-600 flex items-center justify-center
                             group-hover:bg-[#B62727] group-hover:scale-110 group-hover:text-white
                             transition-all duration-300
                         "
