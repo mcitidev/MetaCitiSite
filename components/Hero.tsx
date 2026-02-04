@@ -5,11 +5,13 @@ import { ArrowRight, Play } from "lucide-react";
 import { DashboardShowcase } from "./DashboardShowcase";
 import { Navbar } from "@/components/navbar";
 import { RequestDemoModal } from "./ReqDemoModal";
-import {useState} from "react";
+import React, {useState} from "react";
+import {PlatformTourModal} from "@/components/PlatformTourModal";
 
 
 export function Hero() {
   const [demoOpen, setDemoOpen] = useState(false);
+  const [tourOpen, setTourOpen] = useState(false);
 
   return (
       <>
@@ -143,6 +145,7 @@ export function Hero() {
                 <Button
                     size="lg"
                     variant="outline"
+                    onClick={() => setTourOpen(true)}
                     className="group border-[#455E89] hover:bg-[#455E89]/10 text-[#455E89] hover:text-red-600"
                 >
                   <Play className="w-4 h-4 mr-2"/>
@@ -173,10 +176,9 @@ export function Hero() {
           </div>
         </div>
       </section>
-  <RequestDemoModal
-      open={demoOpen}
-      onClose={() => setDemoOpen(false)}
-  />
+  <RequestDemoModal open={demoOpen} onClose={() => setDemoOpen(false)}/>
+        <PlatformTourModal open={tourOpen} onClose={() => setTourOpen(false)}/>
+
       </>
 );
 }

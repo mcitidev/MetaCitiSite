@@ -1,14 +1,17 @@
 "use client";
 
 import { motion } from 'motion/react';
-import { ArrowRight, CheckCircle2, Calendar } from 'lucide-react';
+import {ArrowRight, CheckCircle2, Calendar, Play} from 'lucide-react';
 import { Button } from './ui/button';
 import { RequestDemoModal } from "./ReqDemoModal";
-import {useState} from "react";
+import React, {useState} from "react";
+import {PlatformTourModal} from "@/components/PlatformTourModal";
 
 
 export function FinalCtaSection() {
   const [open, setOpen] = useState(false);
+  const [tourOpen, setTourOpen] = useState(false);
+
   return (
       <>
       <section id="contact" className="
@@ -66,10 +69,11 @@ export function FinalCtaSection() {
               <Button
                   size="xl"
                   variant="outline"
+                  onClick={() => setTourOpen(true)}
                   className="border-2 border-white text-red-600 hover:bg-white/10 px-12 text-lg h-16 transition-all duration-300 hover:scale-105"
               >
-                <Calendar className="mr-0 h-5 w-5" />
-                Schedule Call
+                <Play className="mr-0 h-5 w-5" />
+                Watch Platform Tour
               </Button>
             </div>
 
@@ -99,6 +103,7 @@ export function FinalCtaSection() {
         </div>
       </section>
   <RequestDemoModal open={open} onClose={() => setOpen(false)} />
+        <PlatformTourModal open={tourOpen} onClose={() => setTourOpen(false)}/>
   </>
   );
 }
