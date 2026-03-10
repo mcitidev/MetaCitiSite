@@ -77,13 +77,13 @@ export function FinalCtaSection() {
               </Button>
             </div>
 
-            <motion.div
+            {/*<motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="mt-20 pt-16 border-t border-white/20"
-            >
+              >
               <div className="grid md:grid-cols-3 gap-12 text-center">
                 <div>
                   <div className="text-5xl lg:text-6xl text-white mb-3">3</div>
@@ -98,7 +98,7 @@ export function FinalCtaSection() {
                   <div className="text-white/80 text-lg">Accuracy Rate</div>
                 </div>
               </div>
-            </motion.div>
+            </motion.div>*/}
           </motion.div>
         </div>
       </section>
