@@ -7,7 +7,7 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 w-screen bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+    <header className="[font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe_UI',Roboto,Arial,sans-serif] fixed top-0 w-screen bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
       <nav className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}

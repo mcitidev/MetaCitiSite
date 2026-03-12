@@ -29,7 +29,7 @@ const benefits = [
 
 export function BenefitsSection() {
     return (
-        <section id="benefits" className=" relative overflow-hidden bg-gradient-to-br from-[#f0f9ff] via-white to-[f0f9ff]">
+        <section id="benefits" className=" [font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe_UI',Roboto,Arial,sans-serif] relative overflow-hidden bg-gradient-to-br from-[#f0f9ff] via-white to-[f0f9ff]">
             <div className="container mx-auto px-6 lg:px-12 py-15 relative z-10 bg-gradient-to-br from-[#f0f9ff] via-white to-[f0f9ff]">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

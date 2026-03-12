@@ -10,7 +10,7 @@ export function Footer() {
   const company = ["About Us", "Contact", "Careers", "Privacy Policy"];
 
   return (
-      <footer className="relative bg-gradient-to-br from-[#1A1A1A] via-[#111827] to-black text-gray-300 pt-20 pb-12 px-6 lg:px-8 overflow-hidden">
+      <footer className="[font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe_UI',Roboto,Arial,sans-serif] relative bg-gradient-to-br from-[#1A1A1A] via-[#111827] to-black text-gray-300 pt-20 pb-12 px-6 lg:px-8 overflow-hidden">
 
         {/* Decorative Blur Glows (premium SaaS look) */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-red-700/20 rounded-full blur-3xl opacity-40 pointer-events-none" />

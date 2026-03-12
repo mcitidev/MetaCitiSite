@@ -53,7 +53,7 @@ export function SectorsSection() {
     return (
         <section
             id="sectors"
-            className="py-10 lg:pt-10 lg:py-15 bg-white relative overflow-hidden"
+            className="[font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe_UI',Roboto,Arial,sans-serif] py-10 lg:pt-10 lg:py-15 bg-white relative overflow-hidden"
         >
             <div className="container mx-auto px-6 lg:px-12 relative z-10">
 

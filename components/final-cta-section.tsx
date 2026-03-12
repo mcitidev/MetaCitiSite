@@ -15,7 +15,7 @@ export function FinalCtaSection() {
   return (
       <>
       <section id="contact" className="
-    py-15 lg:py-20
+    [font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe_UI',Roboto,Arial,sans-serif] py-15 lg:py-20
     bg-gradient-to-br
     from-[#0f172a] via-[#1e293b] to-[#334155]
     relative overflow-hidden

@@ -17,6 +17,7 @@ export function Hero() {
       <>
       <section id = "home" className="
               hero-section
+              [font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe_UI',Roboto,Arial,sans-serif]
               min-h-[90vh]
               lg:min-h-screen
               2xl:min-h-[95vh]

@@ -11,6 +11,7 @@ import "@/styles/benefits.mobile.css";
 import "@/styles/navbar.mobile.css";
 
 
+
 export const metadata: Metadata = {
   title: "Ottonomi AI",
   description:
@@ -29,8 +30,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">
-        <Suspense fallback={null}>{children}</Suspense>
+    <head>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+    </head>
+    <body className="font-sans antialiased">
+    <Suspense fallback={null}>{children}</Suspense>
         {/* Analytics component removed */}
       </body>
     </html>
