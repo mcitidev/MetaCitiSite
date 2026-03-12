@@ -296,24 +296,27 @@ export function CapabilitiesSection() {
                                     {/* Icon bubble */}
                                     <div
                                         className="
-                            w-14 h-14 aspect-square shrink-0 rounded-xl
+                            w-12 h-12 aspect-square shrink-0 rounded-xl
     bg-gradient-to-br from-red-600/20 to-red-600/10
     text-red-600 flex items-center justify-center
                             group-hover:bg-[#B62727] group-hover:scale-110 group-hover:text-white
                             transition-all duration-300
                         "
                                     >
-                                        <capability.icon className="h-10 w-10" />
+                                        <capability.icon className="h-8 w-8" />
                                     </div>
 
                                     {/* Title */}
                                     <h3
                                         className="
-                            text-xl 2xl:text-2xl font-semibold
-                            text-red-600
-                            transition-colors duration-300
-                            group-hover:text-red-600
-                        "
+    text-lg 2xl:text-2xl font-semibold
+    text-red-600
+    leading-snug
+    min-h-[3.2rem]
+    transition-colors duration-300
+    group-hover:text-red-600     line-clamp-2
+
+  "
                                     >
                                         {capability.title}
                                     </h3>
