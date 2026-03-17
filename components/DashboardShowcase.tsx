@@ -8,19 +8,19 @@ const dashboards = [
   {
     id: 1,
     title: "Analytics Dashboard",
-    image: "dash1.png",
+    image: "MCT01.png",
     metrics: { value: "98.7%", label: "Accuracy" }
   },
   {
     id: 2,
     title: "Smart City Monitoring",
-    image: "dashScreen.png",
+    image: "mcitii.png",
     metrics: { value: "45K+", label: "Active Sensors" }
   },
   {
     id: 3,
     title: "Data Visualization",
-    image: "dashmap.png",
+    image: "Mciti-5.png",
     metrics: { value: "Real-time", label: "Processing" }
   }
 ];
