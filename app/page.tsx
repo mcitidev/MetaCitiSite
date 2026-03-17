@@ -38,7 +38,7 @@ export default function HomePage() {
         {/*<SocialProofSection />*/}
         {/*I would personally get rid of "how it works", esp bcz dr hussein
         mentioned it should be sort of unclear*/}
-        {/*<HowItWorksSection />*/}
+        <HowItWorksSection />
       <FinalCtaSection />
       <Footer />
     </main>

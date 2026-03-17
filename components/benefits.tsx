@@ -47,7 +47,7 @@ export function BenefitsSection() {
                     </h2>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-0">
                     {benefits.map((benefit, index) => (
                         <motion.div
                             key={benefit.title}
@@ -68,7 +68,7 @@ export function BenefitsSection() {
                     ))}
                 </div>
 
-                {/* Technology Highlights */}
+                {/* Technology Highlights
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -120,7 +120,7 @@ export function BenefitsSection() {
                             </p>
                         </div>
                     </div>
-                </motion.div>
+                </motion.div>*/}
             </div>
         </section>
     );

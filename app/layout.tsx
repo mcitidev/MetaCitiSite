@@ -9,6 +9,7 @@ import "@/styles/sectors.mobile.css";
 import "@/styles/fieDash.mobile.css";
 import "@/styles/benefits.mobile.css";
 import "@/styles/navbar.mobile.css";
+import "@/styles/how.css"
 
 
 
