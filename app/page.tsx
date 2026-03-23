@@ -13,6 +13,7 @@ import { SectorsSection } from "@/components/SectorsSection"
 import { CapabilitiesSection } from "@/components/CapabilitiesSection";
 import { UnifiedDashboard } from "@/components/UnifiedDashboard";
 import {Navbar} from "@/components/navbar";
+import { BackToTop } from "@/components/BackToTop";
 
 
 
@@ -41,6 +42,7 @@ export default function HomePage() {
         <HowItWorksSection />
       <FinalCtaSection />
       <Footer />
+        <BackToTop />
     </main>
   )
 }
