@@ -96,7 +96,7 @@ export function Hero() {
                       className="absolute top-1/3 left-1/4 w-64 h-64 bg-gradient-radial from-[#dc2626]/10 to-transparent rounded-full blur-3xl"/>
               </div>
 
-              <div className="max-w-7xl xl:max-w-[80rem] 2xl:max-w-[88rem] mx-auto relative z-10">
+              <div className=" max-w-[clamp(1200px,85vw,2000px)] mx-auto relative z-10">
 
                   <div className="grid lg:grid-cols-[1fr_1.1fr] xl:grid-cols-[1fr_1.2fr] gap-12 xl:gap-20 items-center">
 

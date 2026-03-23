@@ -1,7 +1,7 @@
 export const HowItWorksSection = () => {
     return (
         <section className="section" id="how">
-            <div className="container ml-[6%]">
+            <div className="container mx-auto">
 
                 <div className="section-head center">
                     <div className="section-label ml">How It Works</div>
