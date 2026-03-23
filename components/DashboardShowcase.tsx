@@ -5,24 +5,32 @@ import { useState, useEffect } from "react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 const dashboards = [
-  {
-    id: 1,
-    title: "Analytics Dashboard",
-    image: "MCT01.png",
-    metrics: { value: "98.7%", label: "Accuracy" }
-  },
-  {
-    id: 2,
-    title: "Smart City Monitoring",
-    image: "mcitii.png",
-    metrics: { value: "45K+", label: "Active Sensors" }
-  },
-  {
-    id: 3,
-    title: "Data Visualization",
-    image: "Mciti-5.png",
-    metrics: { value: "Real-time", label: "Processing" }
-  }
+    {
+        id: 1,
+        title: "Analytics Dashboard",
+        image: "slide1.png",
+        fit: "contain", // fix for new first slide
+        position: "center",
+        metrics: { value: "98.7%", label: "Accuracy" }
+    },
+    {
+        id: 2,
+        title: "Smart City Monitoring",
+        image: "slide2.png",
+        fit: "cover",
+        scale: 1,
+        position: "center",
+        metrics: { value: "45K+", label: "Active Sensors" }
+    },
+    {
+        id: 3,
+        title: "Data Visualization",
+        image: "slide3.png",
+        fit: "cover",
+        scale: 1,
+        position: "top",
+        metrics: { value: "Real-time", label: "Processing" }
+    }
 ];
 
 export function DashboardShowcase() {
@@ -67,42 +75,54 @@ export function DashboardShowcase() {
 
       {/* Main Dashboard Display */}
       <div className="relative w-full max-w-5xl mx-auto">
-        <div className="relative w-full aspect-[16/9] overflow-hidden">
-        <AnimatePresence mode="wait">
-          <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.03 }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-          >
-            <ImageWithFallback
-                src={dashboards[currentIndex].image}
-                alt={dashboards[currentIndex].title}
-                className="w-full h-auto rounded-2xl"
-            />
-
-            {/* Remove overlay if you want the raw image */}
-            {/* <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" /> */}
-          </motion.div>
-        </AnimatePresence>
-        </div>
+          <div className="relative w-full aspect-[16/9] overflow-hidden rounded-2xl">
+              <AnimatePresence mode="wait">
+                  <motion.div
+                      key={currentIndex}
+                      initial={{opacity: 0}}
+                      animate={{opacity: 1}}
+                      exit={{opacity: 0}}
+                      transition={{duration: 0.5}}
+                      className="absolute inset-0"
+                  >
+                      <motion.div
+                          animate={{
+                              scale: dashboards[currentIndex].scale || 1
+                          }}
+                          transition={{duration: 0.6, ease: "easeOut"}}
+                          className="w-full h-full"
+                      >
+                          <ImageWithFallback
+                              src={dashboards[currentIndex].image}
+                              alt={dashboards[currentIndex].title}
+                              className={`w-full h-full rounded-2xl ${
+                                  dashboards[currentIndex].fit === "contain"
+                                      ? "object-contain"
+                                      : "object-cover"
+                              }`}
+                              style={{
+                                  objectPosition: dashboards[currentIndex].position || "center"
+                              }}
+                          />
+                      </motion.div>
+                  </motion.div>
+              </AnimatePresence>
+          </div>
       </div>
 
 
-      {/* Thumbnail Segments */}
-      <div className="flex gap-3 mt-6">
+        {/* Thumbnail Segments */}
+        <div className="flex gap-3 mt-6">
         {dashboards.map((dashboard, index) => (
-          <button
-            key={dashboard.id}
-            onClick={() => setCurrentIndex(index)}
-            className={`flex-1 relative aspect-video rounded-lg overflow-hidden transition-all ${
-              index === currentIndex 
-                ? 'ring-2 ring-[#B7094C] ring-offset-2 scale-105' 
-                : 'opacity-60 hover:opacity-100'
-            }`}
-          >
+            <button
+                key={dashboard.id}
+                onClick={() => setCurrentIndex(index)}
+                className={`flex-1 relative aspect-video rounded-lg overflow-hidden transition-all ${
+                    index === currentIndex
+                        ? 'ring-2 ring-[#B7094C] ring-offset-2 scale-105'
+                        : 'opacity-60 hover:opacity-100'
+                }`}
+            >
             <ImageWithFallback
               src={dashboard.image}
               alt={dashboard.title}
