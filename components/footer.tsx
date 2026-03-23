@@ -51,7 +51,7 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Solutions */}
+            {/* Solutions
             <div>
               <h3 className="text-white font-semibold mb-4">Solutions</h3>
               <ul className="space-y-3">
@@ -66,9 +66,9 @@ export function Footer() {
                     </li>
                 ))}
               </ul>
-            </div>
+            </div>*/}
 
-            {/* Resources */}
+            {/* Resources
             <div>
               <h3 className="text-white font-semibold mb-4">Resources</h3>
               <ul className="space-y-3">
@@ -83,9 +83,9 @@ export function Footer() {
                     </li>
                 ))}
               </ul>
-            </div>
+            </div>*/}
 
-            {/* Company */}
+            {/* Company
             <div>
               <h3 className="text-white font-semibold mb-4">Company</h3>
               <ul className="space-y-3">
@@ -100,7 +100,7 @@ export function Footer() {
                     </li>
                 ))}
               </ul>
-            </div>
+            </div>*/}
 
           </div>
 
