@@ -30,17 +30,18 @@ export function BackToTop() {
             initial={{opacity: 0, y: 20}}
             animate={{opacity: visible ? 1 : 0, y: visible ? 0 : 20}}
             transition={{duration: 0.3}}
+            whileHover={{scale: 1.1}}
+            whileTap={{scale: 0.95}}
             onClick={scrollToTop}
-            className={`fixed bottom-6 right-6 z-50
-  w-12 h-12 rounded-full
-  bg-gradient-to-r from-[#B7094C] to-[#A01A58] text-white
-  shadow-lg
-  hover:from-[#A01A58] hover:to-[#7A123E]
-  transition-all duration-300
-  flex items-center justify-center
-  ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}
-`}
-            >
+            style={{pointerEvents: visible ? "auto" : "none"}}
+            className="fixed bottom-6 right-6 z-50
+    w-12 h-12 rounded-full
+    bg-gradient-to-r from-[#B7094C] to-[#A01A58] text-white
+    shadow-lg
+    hover:from-[#A01A58] hover:to-[#7A123E]
+    transition-all duration-300
+    flex items-center justify-center"
+        >
             <ArrowUp size={20}/>
         </motion.button>
     );
