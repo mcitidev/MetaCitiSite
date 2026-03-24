@@ -6,7 +6,7 @@ export const HowItWorksSection = () => {
                 <div className="section-head center">
                     <div className="section-label ml">How It Works</div>
                     <h2>From Cameras to Operational Intelligence</h2>
-                    <p>
+                    <p className="pb-15">
                         MetaCiti works with existing roadway infrastructure to provide AI-driven traffic awareness.
                     </p>
                 </div>
