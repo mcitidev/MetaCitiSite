@@ -8,18 +8,18 @@ const dashboards = [
     {
         id: 1,
         title: "Analytics Dashboard",
-        image: "slide1.png",
+        image: "2.png",
         fit: "contain", // fix for new first slide
-        position: "center",
+        position: "top",
         metrics: { value: "98.7%", label: "Accuracy" }
     },
     {
         id: 2,
         title: "Smart City Monitoring",
-        image: "slide2.png",
+        image: "3.png",
         fit: "cover",
         scale: 1,
-        position: "center",
+        position: "top",
         metrics: { value: "45K+", label: "Active Sensors" }
     },
     {
