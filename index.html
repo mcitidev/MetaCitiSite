@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MetaCiti AI — Edge-First Urban Mobility Platform</title>
+<meta name="description" content="MetaCiti AI transforms city and highway cameras into real-time traffic intelligence. Edge-first, deployable in days.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red: #C8222A;
+  --red-hover: #A81C22;
+  --red-light: #FCEAEA;
+  --sky: #E8F4FD;
+  --sky-mid: #C5DEF5;
+  --sky-deep: #4A8FBF;
+  --border: #D8E2EC;
+  --bg: #ffffff;
+  --bg2: #F2F5F8;
+  --bg3: #E8F4FD;
+  --tx1: #1C2630;
+  --tx2: #3D4F60;
+  --tx3: #5A6A7A;
+  --alert-bg: #111820;
+  --max: 1280px;
+  --rad: 12px;
+}
+[data-theme="dark"] {
+  --red: #E05555;
+  --red-hover: #C84444;
+  --red-light: #2A1515;
+  --sky: #0F1E2D;
+  --sky-mid: #1A3048;
+  --sky-deep: #4A8FBF;
+  --border: #1E2E40;
+  --bg: #0D1520;
+  --bg2: #111820;
+  --bg3: #0F1E2D;
+  --tx1: #EDF2F7;
+  --tx2: #A8BDD0;
+  --tx3: #7A9AB8;
+  --alert-bg: #060C14;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--tx1);
+  font-size: 17px;
+  line-height: 1.65;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* ── LAYOUT ── */
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 3rem; }
+.section { border-bottom: 0.5px solid var(--border); }
+.pad { padding: 5.5rem 0; }
+.pad-sm { padding: 4rem 0; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--bg); border-bottom: 0.5px solid var(--border);
+  height: 60px;
+}
+.nav-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 3rem;
+  height: 100%; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand { display: flex; align-items: center; gap: 11px; text-decoration: none; }
+.nav-logo { width: 32px; height: 32px; border-radius: 8px; background: var(--red); display: flex; align-items: center; justify-content: center; }
+.nav-logo i { color: #fff; font-size: 17px; }
+.nav-name { font-size: 18px; font-weight: 700; color: var(--tx1); }
+.nav-name span { color: var(--red); }
+.nav-links { display: flex; gap: 2.25rem; }
+.nav-links a { font-size: 15px; color: var(--tx3); text-decoration: none; transition: color 0.15s; }
+.nav-links a:hover { color: var(--tx1); }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.theme-btn {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: transparent; border: 0.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--tx3); font-size: 18px; transition: all 0.15s;
+}
+.theme-btn:hover { background: var(--bg2); color: var(--tx1); }
+.btn-red {
+  font-size: 15px; font-weight: 600; padding: 9px 22px;
+  background: var(--red); color: #fff;
+  border: none; border-radius: 8px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: background 0.15s;
+}
+.btn-red:hover { background: var(--red-hover); }
+.btn-ghost {
+  font-size: 15px; padding: 9px 22px;
+  background: transparent; color: var(--tx1);
+  border: 0.5px solid var(--border); border-radius: 8px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: background 0.15s;
+}
+.btn-ghost:hover { background: var(--bg2); }
+
+/* ── HERO ── */
+.hero { background: var(--bg3); border-bottom: 0.5px solid var(--border); overflow: hidden; }
+.hero-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 3rem;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center; min-height: 90vh;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+  color: var(--red); border: 0.5px solid var(--red);
+  border-radius: 24px; padding: 5px 14px; margin-bottom: 1.75rem;
+}
+.hero h1 {
+  font-size: 46px; font-weight: 800; line-height: 1.15;
+  color: var(--tx1); margin-bottom: 1.5rem; letter-spacing: -0.5px;
+}
+.hero h1 em { font-style: normal; color: var(--red); }
+.hero-sub {
+  font-size: 18px; color: var(--tx2); line-height: 1.75;
+  margin-bottom: 2.25rem;
+}
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 2.75rem; }
+.hero-btns .btn-red, .hero-btns .btn-ghost { font-size: 16px; padding: 12px 26px; }
+.hero-stats {
+  display: flex; gap: 3rem; flex-wrap: wrap;
+  padding-top: 1.75rem; border-top: 0.5px solid var(--border);
+}
+.stat-val { font-size: 30px; font-weight: 800; color: var(--tx1); }
+.stat-val span { color: var(--red); }
+.stat-lbl { font-size: 13px; color: var(--tx3); margin-top: 3px; }
+.hero-visual { position: relative; padding: 2.5rem 0; }
+.hero-screen {
+  width: 100%; border-radius: 14px;
+  box-shadow: 0 32px 100px rgba(0,0,0,0.38);
+  border: 0.5px solid var(--border); display: block;
+}
+.hero-badge {
+  position: absolute; bottom: 3.5rem; left: -1rem;
+  background: var(--bg); border: 0.5px solid var(--border);
+  border-radius: 12px; padding: 12px 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-badge-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--red); animation: pulse 2s infinite; flex-shrink: 0; }
+.hero-badge-text { font-size: 14px; font-weight: 600; color: var(--tx1); }
+.hero-badge-sub { font-size: 12px; color: var(--tx3); margin-top: 1px; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* ── TICKER ── */
+.ticker { background: var(--bg); border-bottom: 0.5px solid var(--border); padding: 13px 0; }
+.ticker-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 3rem;
+  display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+}
+.ticker-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; color: var(--red); white-space: nowrap; }
+.ticker-items { display: flex; gap: 2rem; flex-wrap: wrap; }
+.ticker-item { font-size: 14px; color: var(--tx3); display: flex; align-items: center; gap: 7px; }
+.ticker-item i { font-size: 16px; color: var(--sky-deep); }
+
+/* ── SECTION LABELS ── */
+.s-tag {
+  display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.7px; color: var(--red);
+  border-left: 3px solid var(--red); padding-left: 10px; margin-bottom: 12px;
+}
+.s-head {
+  font-size: 34px; font-weight: 800; color: var(--tx1);
+  margin-bottom: 14px; line-height: 1.2; letter-spacing: -0.3px;
+}
+.s-sub {
+  font-size: 17px; color: var(--tx2); line-height: 1.75; max-width: 560px;
+}
+
+/* ── SPLIT LAYOUT ── */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.split.rev { direction: rtl; }
+.split.rev > * { direction: ltr; }
+.split-visual img {
+  width: 100%; border-radius: var(--rad);
+  box-shadow: 0 20px 70px rgba(0,0,0,0.28);
+  border: 0.5px solid var(--border); display: block;
+}
+
+/* ── BULLET LIST ── */
+.feat-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 1.75rem; }
+.feat-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 16px; color: var(--tx2); line-height: 1.6; }
+.feat-list li i { color: var(--red); font-size: 18px; margin-top: 2px; flex-shrink: 0; }
+
+/* ── ALERT FEED ── */
+.alert-strip {
+  background: var(--alert-bg); border: 0.5px solid var(--border);
+  border-radius: var(--rad); padding: 1.5rem 1.75rem; margin-top: 1.75rem;
+}
+.alert-hdr {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.6px;
+  color: var(--tx3); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 9px;
+}
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); animation: pulse 2s infinite; }
+.a-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 9px 0; border-top: 0.5px solid rgba(255,255,255,0.05);
+}
+.a-time { color: var(--tx3); font-size: 13px; min-width: 58px; font-variant-numeric: tabular-nums; }
+.a-tag { padding: 3px 10px; border-radius: 5px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.t-i { background:#2A0E0E; color:#E24B4A; }
+.t-q { background:#0E1C2A; color:#5BA3D9; }
+.t-f { background:#0E1E0E; color:#5DCA95; }
+.t-h { background:#1E1A0E; color:#EF9F27; }
+.a-msg { color: #C8D8E8; flex: 1; font-size: 14px; }
+.a-loc { color: var(--tx3); font-size: 13px; white-space: nowrap; }
+
+/* ── EDGE CARDS ── */
+.edge-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 2.25rem; }
+.edge-card {
+  background: var(--bg); border: 0.5px solid var(--border);
+  border-radius: var(--rad); padding: 1.75rem;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.edge-card:hover { border-color: var(--sky-deep); transform: translateY(-3px); }
+.e-icon { font-size: 26px; color: var(--red); margin-bottom: 14px; }
+.e-title { font-size: 17px; font-weight: 700; color: var(--tx1); margin-bottom: 8px; }
+.e-desc { font-size: 15px; color: var(--tx3); line-height: 1.65; }
+
+/* ── DEPLOY TILES ── */
+.deploy-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 2.25rem; }
+.d-tile {
+  background: var(--bg); border: 0.5px solid var(--border);
+  border-top: 3px solid var(--red); border-radius: var(--rad);
+  padding: 2rem; transition: box-shadow 0.15s;
+}
+.d-tile:hover { box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
+.d-icon { font-size: 28px; color: var(--red); margin-bottom: 16px; }
+.d-type { font-size: 11px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--tx3); margin-bottom: 8px; }
+.d-title { font-size: 18px; font-weight: 700; color: var(--tx1); margin-bottom: 10px; line-height: 1.35; }
+.d-desc { font-size: 16px; color: var(--tx2); line-height: 1.7; margin-bottom: 16px; }
+.d-geo {
+  font-size: 12px; padding: 4px 12px; border-radius: 20px;
+  background: var(--sky); color: var(--sky-deep);
+  border: 0.5px solid var(--sky-mid); display: inline-block;
+}
+
+/* ── CAPABILITIES ── */
+.cap-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 2.25rem; }
+.c-card {
+  background: var(--bg); border: 0.5px solid var(--border);
+  border-radius: var(--rad); padding: 1.75rem;
+  transition: border-color 0.15s;
+}
+.c-card:hover { border-color: var(--sky-deep); }
+.c-card.hl { border-color: var(--red); border-width: 1px; }
+.c-badge {
+  font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 4px;
+  background: var(--red-light); color: var(--red);
+  display: inline-block; margin-bottom: 12px;
+  text-transform: uppercase; letter-spacing: 0.4px;
+}
+.c-icon { font-size: 24px; color: var(--sky-deep); margin-bottom: 12px; }
+.c-title { font-size: 17px; font-weight: 700; color: var(--tx1); margin-bottom: 7px; line-height: 1.35; }
+.c-desc { font-size: 15px; color: var(--tx3); line-height: 1.65; }
+
+/* ── ANALYTICS ── */
+.analytics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 2.25rem; }
+.analytics-grid img {
+  width: 100%; border-radius: var(--rad);
+  border: 0.5px solid var(--border); display: block;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.22);
+}
+.analytics-grid .wide { grid-column: auto; }
+
+/* ── EDGE FIRST FLOW DIAGRAM ── */
+.flow { display: flex; align-items: center; justify-content: center; margin-bottom: 2.5rem; }
+.flow-node { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 110px; }
+.flow-icon {
+  width: 64px; height: 64px; border-radius: 14px;
+  border: 1.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg2);
+}
+.flow-icon i { font-size: 28px; color: var(--sky-deep); }
+.flow-icon.edge {
+  border: 2px solid var(--red);
+  box-shadow: 0 0 22px rgba(200,34,42,0.18);
+  background: var(--bg);
+}
+.flow-icon.edge i { color: var(--red); }
+.flow-label { font-size: 13px; font-weight: 600; color: var(--tx3); text-align: center; }
+.flow-label.red { color: var(--red); }
+.flow-arrow { display: flex; align-items: center; padding: 0 4px; margin-bottom: 22px; }
+.flow-line {
+  width: 48px; height: 1.5px;
+  background: linear-gradient(to right, var(--border), var(--red));
+  position: relative;
+}
+.flow-line::after {
+  content: ''; position: absolute; right: -1px; top: -4px;
+  border-left: 7px solid var(--red);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+.no-cloud {
+  display: flex; align-items: center; justify-content: center;
+  gap: 7px; margin-top: 1.5rem;
+  font-size: 13px; color: var(--tx3); font-weight: 500;
+}
+.cloud-wrap { position: relative; display: inline-flex; }
+.cloud-wrap i { font-size: 18px; color: var(--tx3); }
+.cloud-cross {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+}
+.cloud-cross::before, .cloud-cross::after {
+  content: ''; position: absolute;
+  width: 22px; height: 2px; background: var(--red); border-radius: 1px;
+}
+.cloud-cross::before { transform: rotate(45deg); }
+.cloud-cross::after { transform: rotate(-45deg); }
+
+/* ── EDGE FIRST (FLAT) ── */
+.edge-flat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-top: 2.25rem; }
+.edge-flat {
+  background: var(--bg2); border: 0.5px solid var(--border);
+  border-radius: var(--rad); padding: 1.25rem 1.5rem;
+  font-size: 16px; font-weight: 600; color: var(--tx1);
+  display: flex; align-items: center; gap: 12px;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.edge-flat:hover { border-color: var(--sky-deep); transform: translateY(-2px); }
+.edge-flat i { font-size: 22px; color: var(--red); flex-shrink: 0; }
+
+/* ── HOW IT WORKS ── */
+.how-steps {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 0; margin-top: 3rem; position: relative;
+}
+.how-steps::before {
+  content: ''; position: absolute;
+  top: 22px; left: calc(12.5% + 16px); right: calc(12.5% + 16px);
+  height: 1px; background: var(--border);
+}
+.h-step { padding: 0 1.25rem; text-align: center; }
+.h-num {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--red); color: #fff;
+  font-size: 18px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.25rem; position: relative; z-index: 1;
+}
+.h-title { font-size: 17px; font-weight: 700; color: var(--tx1); margin-bottom: 10px; }
+.h-desc { font-size: 15px; color: var(--tx3); line-height: 1.65; margin-bottom: 12px; }
+.h-badge {
+  font-size: 12px; padding: 4px 12px; border-radius: 20px;
+  background: var(--sky); color: var(--sky-deep);
+  border: 0.5px solid var(--sky-mid); display: inline-block; line-height: 1.5;
+}
+
+/* ── SEPARATORS ── */
+.sep-reticle {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; padding: 2.5rem 0; position: relative; background: var(--bg);
+}
+.sep-reticle::before {
+  content: ''; position: absolute; left: 0; right: 0; top: 50%;
+  height: 1px;
+  background-image: linear-gradient(to right, var(--sky-mid) 60%, transparent 60%);
+  background-size: 8px 1px; opacity: 0.6;
+}
+.sep-reticle-ring {
+  width: 34px; height: 34px; border: 1px solid var(--red);
+  border-radius: 50%; background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 1;
+  box-shadow: 0 0 14px rgba(200,34,42,0.18);
+}
+.sep-reticle-dot {
+  width: 9px; height: 9px; border-radius: 50%; background: var(--red);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.sep-dots {
+  width: 100%; height: 140px; margin: 0;
+  background-image: radial-gradient(rgba(200,34,42,0.18) 1.5px, transparent 1.5px);
+  background-size: 18px 18px; background-position: center;
+  mask-image: radial-gradient(circle, black 25%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle, black 25%, transparent 75%);
+}
+
+/* ── SECTORS ── */
+.sector-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 1.75rem;
+}
+.s-pill {
+  font-size: 15px; padding: 12px 16px;
+  border: 0.5px solid var(--border); border-radius: 10px;
+  color: var(--tx2); background: var(--bg);
+  display: flex; align-items: center; gap: 10px;
+  transition: all 0.15s;
+}
+.s-pill i { font-size: 16px; color: var(--sky-deep); }
+.s-pill.on { border-color: var(--red); color: var(--red); background: var(--red-light); }
+.s-pill.on i { color: var(--red); }
+
+/* ── CTA ── */
+.cta-wrap { background: var(--bg3); padding: 5.5rem 0; border-bottom: 0.5px solid var(--border); }
+.cta-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 3rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+}
+.cta-copy h2 { font-size: 34px; font-weight: 800; color: var(--tx1); margin-bottom: 14px; letter-spacing: -0.3px; }
+.cta-copy p { font-size: 17px; color: var(--tx2); line-height: 1.75; margin-bottom: 2rem; }
+.cta-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 1.75rem; }
+.cta-btns .btn-red, .cta-btns .btn-ghost { font-size: 16px; padding: 12px 26px; }
+.cta-notes { display: flex; gap: 2rem; flex-wrap: wrap; }
+.cta-note { display: flex; align-items: center; gap: 7px; font-size: 14px; color: var(--tx3); }
+.cta-note i { font-size: 15px; color: #5DCA95; }
+.cta-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.cta-visual img {
+  width: 100%; border-radius: 10px;
+  border: 0.5px solid var(--border);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.2); display: block;
+}
+.cta-visual img:first-child { grid-column: 1 / -1; }
+
+/* ── FOOTER ── */
+footer { padding: 2rem 0; background: var(--bg); }
+.foot-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 3rem;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;
+}
+.foot-brand { display: flex; align-items: center; gap: 11px; }
+.foot-logo { width: 24px; height: 24px; border-radius: 6px; background: var(--red); display: flex; align-items: center; justify-content: center; }
+.foot-logo i { color: #fff; font-size: 13px; }
+.foot-copy { font-size: 14px; color: var(--tx3); }
+.foot-links { display: flex; gap: 2rem; }
+.foot-links a { font-size: 14px; color: var(--tx3); text-decoration: none; transition: color 0.15s; }
+.foot-links a:hover { color: var(--tx1); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .edge-flat-grid { grid-template-columns: 1fr 1fr; }
+  .how-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .how-steps::before { display: none; }
+}
+@media (max-width: 860px) {
+  .hero-inner, .split, .cta-inner { grid-template-columns: 1fr; }
+  .split.rev { direction: ltr; }
+  .hero-inner { min-height: auto; padding: 3.5rem 1.5rem; }
+  .hero h1 { font-size: 34px; }
+  .hero-sub { font-size: 17px; }
+  .s-head { font-size: 26px; }
+  .cap-grid, .deploy-grid { grid-template-columns: 1fr 1fr; }
+  .sector-grid { grid-template-columns: 1fr 1fr; }
+  .analytics-grid { grid-template-columns: 1fr; }
+  .analytics-grid .wide { grid-column: auto; }
+  .cta-visual { grid-template-columns: 1fr; }
+  .cta-visual img:first-child { grid-column: auto; }
+  .wrap, .nav-inner, .ticker-inner, .cta-inner, .foot-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .nav-links { display: none; }
+}
+@media (max-width: 560px) {
+  .hero h1 { font-size: 28px; }
+  .edge-grid, .edge-flat-grid, .cap-grid, .deploy-grid, .how-steps, .sector-grid { grid-template-columns: 1fr; }
+  .a-loc { display: none; }
+  .hero-stats { gap: 1.75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="#">
+      <div class="nav-logo"><i class="ti ti-traffic-lights"></i></div>
+      <span class="nav-name">Meta<span>Citi</span> AI</span>
+    </a>
+    <div class="nav-links">
+      <a href="#platform">Live Map</a>
+      <a href="#deployments">Deployments</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#analytics">Analytics</a>
+      <a href="#sectors">Sectors</a>
+      <a href="#how">How it works</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+        <i class="ti ti-sun" id="themeIcon"></i>
+      </button>
+      <button class="btn-red">Request demo</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero section">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="hero-eyebrow"><i class="ti ti-cpu"></i> Edge-First AI · Deployable in days</div>
+      <h1>Real-time traffic intelligence,<br><em>deployed at the edge.</em><br>No rip-and-replace required.</h1>
+      <p class="hero-sub">Deployed at international border crossings, toll expressway networks, and national highway programs — MetaCiti AI delivers incident detection, wait time prediction, and live congestion intelligence using your existing cameras.</p>
+      <div class="hero-btns">
+        <button class="btn-red"><i class="ti ti-player-play"></i> Watch platform tour</button>
+        <button class="btn-ghost">Request demo <i class="ti ti-arrow-right"></i></button>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-val">98.7<span>%</span></div><div class="stat-lbl">Detection accuracy</div></div>
+        <div><div class="stat-val">3<span>+</span></div><div class="stat-lbl">Countries live</div></div>
+        <div><div class="stat-val">&lt;200<span>ms</span></div><div class="stat-lbl">Edge alert latency</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <video
+        class="hero-screen"
+        src="hero-video.mp4"
+        poster="mc1_1.png"
+        autoplay
+        loop
+        muted
+        playsinline
+        aria-label="MetaCiti platform — live traffic intelligence in action"
+      ></video>
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        <div>
+          <div class="hero-badge-text">43 active alerts</div>
+          <div class="hero-badge-sub">3 cameras · All systems live</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-label">Live in</span>
+    <div class="ticker-items">
+      <span class="ticker-item"><i class="ti ti-building-bridge"></i> International border crossings</span>
+      <span class="ticker-item"><i class="ti ti-road"></i> Toll &amp; expressway networks</span>
+      <span class="ticker-item"><i class="ti ti-world"></i> National highway programs</span>
+      <span class="ticker-item"><i class="ti ti-map-pin"></i> City intersections &amp; corridors</span>
+    </div>
+  </div>
+</div>
+
+<!-- LIVE MAP -->
+<section class="section" id="platform" style="background:var(--bg2);">
+  <div class="wrap pad">
+    <div class="split">
+      <div class="split-copy">
+        <div class="s-tag">Live Map</div>
+        <div class="s-head">Every camera. Every corridor. One live view.</div>
+        <p class="s-sub">MetaCiti plots your road network on real satellite maps. Camera nodes pulse with live alert status — red for critical, orange for warning. Click any camera to pull up its live feed, detection counts, and congestion thresholds instantly.</p>
+        <ul class="feat-list">
+          <li><i class="ti ti-camera"></i> Camera pins color-coded by alert severity — critical, warning, low, normal</li>
+          <li><i class="ti ti-route"></i> Road corridors overlaid with live congestion and flow data</li>
+          <li><i class="ti ti-car"></i> Vehicle tracking dots showing real movement in the corridor</li>
+          <li><i class="ti ti-layers-difference"></i> Toggleable map layers — incidents, flow, heatmaps, detections</li>
+        </ul>
+      </div>
+      <div class="split-visual">
+        <img src="mc2_new.png" alt="MetaCiti live map — camera popup with live highway feed, alert count and corridor overlay">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEPARATOR: camera reticle -->
+<div class="sep-reticle">
+  <div class="sep-reticle-ring"><div class="sep-reticle-dot"></div></div>
+</div>
+
+<!-- DEPLOYMENTS -->
+<section class="section" id="deployments" style="background:var(--bg3);">
+  <div class="wrap pad">
+    <div class="s-tag">Active deployments</div>
+    <div class="s-head">Proven in demanding environments</div>
+    <p class="s-sub">Actively deployed across three distinct high-stakes operational contexts spanning North America and the Middle East.</p>
+    <div class="deploy-grid">
+      <div class="d-tile">
+        <div class="d-icon"><i class="ti ti-building-bridge"></i></div>
+        <div class="d-type">International border crossing</div>
+        <div class="d-title">Vehicle queue &amp; wait time prediction</div>
+        <div class="d-desc">Live queue monitoring with predictive wait time forecasting and lane-level congestion alerts at a high-volume cross-border land corridor.</div>
+        <span class="d-geo">North America</span>
+      </div>
+      <div class="d-tile">
+        <div class="d-icon"><i class="ti ti-road"></i></div>
+        <div class="d-type">Toll expressway network</div>
+        <div class="d-title">Incident detection &amp; flow analytics</div>
+        <div class="d-desc">Automated stalled vehicle detection, debris alerts, and real-time flow analytics across a multi-corridor regional expressway authority.</div>
+        <span class="d-geo">Southeast USA</span>
+      </div>
+      <div class="d-tile">
+        <div class="d-icon"><i class="ti ti-world"></i></div>
+        <div class="d-type">National highway program</div>
+        <div class="d-title">Country-wide traffic monitoring</div>
+        <div class="d-desc">Citywide and highway AI monitoring across hundreds of intersections with live congestion mapping and centralized incident response.</div>
+        <span class="d-geo">Middle East</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="section" id="capabilities" style="background:var(--bg);">
+  <div class="wrap pad">
+    <div class="s-tag">Capabilities</div>
+    <div class="s-head">Everything traffic operations needs</div>
+    <p class="s-sub">From first detection to operator action — the full intelligence stack, running at the edge.</p>
+    <div class="cap-grid">
+      <div class="c-card hl">
+        <div class="c-badge">Differentiator</div>
+        <div class="c-icon"><i class="ti ti-clock-hour-4"></i></div>
+        <div class="c-title">Wait time prediction &amp; queue forecasting</div>
+        <div class="c-desc">Predict vehicle wait times at border crossings and toll plazas before queues form.</div>
+      </div>
+      <div class="c-card">
+        <div class="c-icon"><i class="ti ti-alert-triangle"></i></div>
+        <div class="c-title">Stalled vehicles &amp; lane blockages</div>
+        <div class="c-desc">Instant detection with operator alerts dispatched in real time.</div>
+      </div>
+      <div class="c-card">
+        <div class="c-icon"><i class="ti ti-arrows-left-right"></i></div>
+        <div class="c-title">Wrong-way &amp; risky driving</div>
+        <div class="c-desc">Detects and flags dangerous driving behavior for immediate response.</div>
+      </div>
+      <div class="c-card">
+        <div class="c-icon"><i class="ti ti-chart-line"></i></div>
+        <div class="c-title">Congestion maps &amp; bottleneck analysis</div>
+        <div class="c-desc">Live corridor congestion with bottleneck identification and historical trends.</div>
+      </div>
+      <div class="c-card">
+        <div class="c-icon"><i class="ti ti-heart-rate-monitor"></i></div>
+        <div class="c-title">Near-miss &amp; conflict analytics</div>
+        <div class="c-desc">Vision Zero–aligned conflict detection for safety program reporting.</div>
+      </div>
+      <div class="c-card">
+        <div class="c-icon"><i class="ti ti-map-2"></i></div>
+        <div class="c-title">Live network operations</div>
+        <div class="c-desc">A single map view of every corridor, intersection, and incident — updated in real time.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEPARATOR: camera reticle -->
+<div class="sep-reticle">
+  <div class="sep-reticle-ring"><div class="sep-reticle-dot"></div></div>
+</div>
+
+<!-- ANALYTICS -->
+<section class="section" id="analytics" style="background:var(--bg2);">
+  <div class="wrap pad">
+    <div class="s-tag">Analytics &amp; Intelligence</div>
+    <div class="s-head">Not just live. Historically intelligent.</div>
+    <p class="s-sub">MetaCiti captures every detection event, building a continuous record of network behavior — alert trends, congestion distributions, hourly activity patterns, camera performance, and weekly severity profiles.</p>
+    <div class="analytics-grid">
+      <img class="wide" src="dashboard-mc1.png" alt="MetaCiti alerts analytics — alert trends, type distribution, 24-hour heatmap, weekly severity pattern">
+      <img class="wide" src="dashboard-mc6.png" alt="MetaCiti congestion analytics — distribution chart, congestion levels over time, live alert table">
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section class="section" id="sectors" style="background:var(--bg3);">
+  <div class="wrap pad-sm">
+    <div class="s-tag">Sectors</div>
+    <div class="s-head">Built for every transportation context</div>
+    <p class="s-sub">MetaCiti serves agencies and operators across the full transportation network — from city streets to national corridors.</p>
+    <div class="sector-grid">
+      <div class="s-pill on"><i class="ti ti-building-bridge"></i> Border crossings</div>
+      <div class="s-pill on"><i class="ti ti-road"></i> Toll &amp; expressways</div>
+      <div class="s-pill on"><i class="ti ti-world"></i> National highway programs</div>
+      <div class="s-pill"><i class="ti ti-traffic-lights"></i> City traffic operations</div>
+      <div class="s-pill"><i class="ti ti-bus"></i> Transit &amp; mobility</div>
+      <div class="s-pill"><i class="ti ti-helmet"></i> Work zones &amp; construction</div>
+      <div class="s-pill"><i class="ti ti-shield"></i> Transportation safety</div>
+      <div class="s-pill"><i class="ti ti-building"></i> Smart city / ITS</div>
+      <div class="s-pill"><i class="ti ti-plug"></i> System integrators</div>
+    </div>
+    <p style="font-size:14px; color:var(--tx3); margin-top:18px; display:flex; align-items:center; gap:8px;">
+      <span style="width:9px;height:9px;border-radius:50%;background:var(--red);display:inline-block;flex-shrink:0;"></span>
+      Currently active deployments
+    </p>
+  </div>
+</section>
+
+<!-- EDGE FIRST -->
+<section class="section" style="background:var(--bg);">
+  <div class="wrap pad">
+    <div class="s-tag">Architecture</div>
+    <div class="s-head">Edge-First</div>
+    <p class="s-sub">MetaCiti runs as a camera-native AI agent — continuously watching your network, tracking and detecting incidents, and alerting operators in real time.</p>
+
+    <div class="flow">
+      <div class="flow-node">
+        <div class="flow-icon"><i class="ti ti-device-cctv"></i></div>
+        <div class="flow-label">Camera</div>
+      </div>
+      <div class="flow-arrow"><div class="flow-line"></div></div>
+      <div class="flow-node">
+        <div class="flow-icon edge"><i class="ti ti-sparkles"></i></div>
+        <div class="flow-label red">Edge AI</div>
+      </div>
+      <div class="flow-arrow"><div class="flow-line"></div></div>
+      <div class="flow-node">
+        <div class="flow-icon"><i class="ti ti-layout-dashboard"></i></div>
+        <div class="flow-label">Dashboard</div>
+      </div>
+    </div>
+
+    <div class="edge-flat-grid">
+      <div class="edge-flat"><i class="ti ti-cpu"></i> On-device inference</div>
+      <div class="edge-flat"><i class="ti ti-bolt"></i> Sub-second alerts</div>
+      <div class="edge-flat"><i class="ti ti-camera"></i> Existing camera compatible</div>
+      <div class="edge-flat"><i class="ti ti-shield-check"></i> Air-gap capable</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how" style="background:var(--bg2);">
+  <div class="wrap pad">
+    <div class="s-tag">How it works</div>
+    <div class="s-head">Operational in days, not months</div>
+    <p class="s-sub">MetaCiti is engineered for fast deployment on existing infrastructure. No construction. No camera replacement.</p>
+    <div class="how-steps">
+      <div class="h-step">
+        <div class="h-num">1</div>
+        <div class="h-title">Connect existing cameras</div>
+        <div class="h-desc">Point MetaCiti at any IP camera, CCTV, or RTSP stream. Supports mixed environments across multiple sites.</div>
+        <span class="h-badge">RTSP · ONVIF · IP · CCTV</span>
+      </div>
+      <div class="h-step">
+        <div class="h-num">2</div>
+        <div class="h-title">Deploy edge modules</div>
+        <div class="h-desc">AI models deploy to on-site edge nodes. Calibration typically completes in 1–3 days per site.</div>
+        <span class="h-badge">On-premise · Air-gap capable</span>
+      </div>
+      <div class="h-step">
+        <div class="h-num">3</div>
+        <div class="h-title">Operators go live</div>
+        <div class="h-desc">The dashboard activates with live alerts, live map view, and incident review. API connects to existing TMC workflows.</div>
+        <span class="h-badge">Dashboard · API · TMC</span>
+      </div>
+      <div class="h-step">
+        <div class="h-num">4</div>
+        <div class="h-title">Scale citywide</div>
+        <div class="h-desc">Add cameras and sites without redeployment — from a single intersection to a national highway program.</div>
+        <span class="h-badge">Multi-site · Single pane</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEPARATOR: dot matrix fade -->
+<div class="sep-dots"></div>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="cta-inner">
+    <div class="cta-copy">
+      <div class="s-tag">Get started</div>
+      <h2>See MetaCiti on your infrastructure</h2>
+      <p>We run a focused technical demo using a sample of your existing camera feeds. No commitment. Typically 45 minutes.</p>
+      <div class="cta-btns">
+        <button class="btn-red">Request a demo <i class="ti ti-arrow-right"></i></button>
+        <button class="btn-ghost"><i class="ti ti-file-text"></i> Download datasheet</button>
+      </div>
+      <div class="cta-notes">
+        <div class="cta-note"><i class="ti ti-check"></i> No hardware required</div>
+        <div class="cta-note"><i class="ti ti-check"></i> Live in days</div>
+        <div class="cta-note"><i class="ti ti-check"></i> Works with existing cameras</div>
+      </div>
+    </div>
+    <div class="cta-visual">
+      <img src="mc1_1.png" alt="MetaCiti operations center dashboard">
+      <img src="dashboard-mc1.png" alt="MetaCiti alerts analytics dashboard">
+      <img src="dashboard-mc6.png" alt="MetaCiti congestion analytics">
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <div class="foot-logo"><i class="ti ti-traffic-lights"></i></div>
+      <span class="foot-copy">© 2025 Ottonomi AI — MetaCiti platform</span>
+    </div>
+    <div class="foot-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const heroVideo = document.querySelector('.hero-screen');
+  if (heroVideo && heroVideo.tagName === 'VIDEO') {
+    heroVideo.addEventListener('loadedmetadata', () => { heroVideo.playbackRate = 0.5; });
+  }
+
+  const btn = document.getElementById('themeBtn');
+  const icon = document.getElementById('themeIcon');
+  const html = document.documentElement;
+  function setTheme(t) {
+    html.setAttribute('data-theme', t);
+    icon.className = t === 'dark' ? 'ti ti-sun' : 'ti ti-moon';
+    localStorage.setItem('mcTheme', t);
+  }
+  const saved = localStorage.getItem('mcTheme');
+  const sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  setTheme(saved || sys);
+  btn.addEventListener('click', () => setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+</script>
+</body>
+</html>
